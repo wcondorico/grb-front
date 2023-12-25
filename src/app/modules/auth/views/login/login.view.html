@@ -1,1 +1,42 @@
-<p>login works!</p>
+<section class="login">
+  <h1 class="login__title">GRB</h1>
+
+  <form class="login__form">
+    <div class="login__form--email">
+      <nz-input-group [nzPrefix]="prefixTemplateUser">
+        <input type="text" nz-input placeholder="Correo electrónico" nzSize="large"/>
+      </nz-input-group>
+      <ng-template #prefixTemplateUser><span nz-icon nzType="mail" nzTheme="fill"></span></ng-template>
+    </div>
+
+    <div class="login__form--password">
+      <nz-input-group [nzPrefix]="prefixTemplatePassword">
+        <input type="text" nz-input placeholder="Contraseña" nzSize="large"/>
+      </nz-input-group>
+      <ng-template #prefixTemplatePassword><span nz-icon nzType="lock" nzTheme="fill"></span></ng-template>
+      <a class="forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+
+
+    <button class="login__form--button" nz-button nzType="primary" nzSize="large" nzShape="round">
+      Iniciar sesión
+    </button>
+
+    <p class="login__form--register">
+      ¿No tienes cuenta?
+      <span>
+        <a>Registrate</a>
+      </span>
+    </p>
+
+
+    <div class="login__form--alternatives">
+      <p>O inicia sesión con:</p>
+      <div class="options">
+        <span nz-icon nzType="google-square" nzTheme="fill"></span>
+        <span nz-icon nzType="facebook" nzTheme="fill"></span>
+      </div>
+    </div>
+  </form>
+</section>
+
