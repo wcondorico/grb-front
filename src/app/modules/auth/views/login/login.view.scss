@@ -54,8 +54,9 @@
         }
       }
 
-      &--password {
+      &--forgot-password {
         text-align: end;
+        margin-top: -15px;
 
         a {
           display: block;
@@ -78,6 +79,11 @@
 
         &:hover {
           background-color: #011699;
+        }
+
+        &:disabled {
+          background-color: #a6b2fb;
+          color: white;
         }
       }
 

@@ -6,27 +6,58 @@
     <h4>Gestor de Referencias Bibliográficas</h4>
   </div>
 
-  <form class="login__form">
+  <form class="login__form" [formGroup]="loginFormGroup" (ngSubmit)="signInWithPassword()">
     <div class="login__form--email">
-      <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-        <input type="email" nz-input placeholder="Correo electrónico" nzSize="large"/>
-      </nz-input-group>
-      <ng-template #prefixTemplateUser>
-        <span nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#00117d"></span>
-      </ng-template>
+      <nz-form-item>
+        <nz-form-control nzHasFeedback [nzErrorTip]="emailError">
+          <nz-input-group [nzPrefix]="prefixEmail" nzSize="large">
+            <input formControlName="email" type="email" nz-input placeholder="Correo electrónico" nzSize="large"/>
+          </nz-input-group>
+          <ng-template #prefixEmail>
+            <span nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#00117d"></span>
+          </ng-template>
+          <ng-template #emailError let-control>
+            <ng-container *ngIf="control.hasError('email')">Correo electrónico no válido</ng-container>
+            <ng-container *ngIf="control.hasError('required')">Correo electrónico es obligatorio</ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
     </div>
 
     <div class="login__form--password">
-      <nz-input-group [nzPrefix]="prefixTemplatePassword" nzSize="large">
-        <input type="password" nz-input placeholder="Contraseña" nzSize="large" autocomplete=""/>
-      </nz-input-group>
-      <ng-template #prefixTemplatePassword>
-        <span nz-icon nzType="lock" nzTheme="twotone" nzTwotoneColor="#00117d"></span>
-      </ng-template>
-      <a class="forgot-password">¿Olvidaste tu contraseña?</a>
+      <nz-form-item>
+        <nz-form-control nzHasFeedback [nzErrorTip]="passwordError">
+          <nz-input-group [nzPrefix]="prefixPassword" nzSize="large">
+            <input
+              formControlName="password"
+              type="password"
+              nz-input
+              placeholder="Contraseña"
+              nzSize="large"
+              autocomplete=""
+            />
+          </nz-input-group>
+          <ng-template #prefixPassword>
+            <span nz-icon nzType="lock" nzTheme="twotone" nzTwotoneColor="#00117d"></span>
+          </ng-template>
+          <ng-template #passwordError let-control>
+            <ng-container *ngIf="control.hasError('required')">Contraseña obligatoria</ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
     </div>
 
-    <button class="login__form--button" nz-button nzType="primary" nzSize="large">
+    <div class="login__form--forgot-password">
+      <a>¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button
+      class="login__form--button"
+      nz-button
+      nzType="primary"
+      nzSize="large"
+      type="submit"
+      [disabled]="loginFormGroup.invalid">
       Iniciar sesión
     </button>
 
