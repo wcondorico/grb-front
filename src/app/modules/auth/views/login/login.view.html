@@ -1,24 +1,32 @@
 <section class="login">
-  <h1 class="login__title">GRB</h1>
+  <div class="login__title">
+    <div>
+      <span nz-icon nzType="ng-zorro:grb"></span>
+    </div>
+    <h4>Gestor de Referencias Bibliográficas</h4>
+  </div>
 
   <form class="login__form">
     <div class="login__form--email">
-      <nz-input-group [nzPrefix]="prefixTemplateUser">
-        <input type="text" nz-input placeholder="Correo electrónico" nzSize="large"/>
+      <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
+        <input type="email" nz-input placeholder="Correo electrónico" nzSize="large"/>
       </nz-input-group>
-      <ng-template #prefixTemplateUser><span nz-icon nzType="mail" nzTheme="fill"></span></ng-template>
+      <ng-template #prefixTemplateUser>
+        <span nz-icon nzType="mail" nzTheme="twotone" nzTwotoneColor="#00117d"></span>
+      </ng-template>
     </div>
 
     <div class="login__form--password">
-      <nz-input-group [nzPrefix]="prefixTemplatePassword">
-        <input type="text" nz-input placeholder="Contraseña" nzSize="large"/>
+      <nz-input-group [nzPrefix]="prefixTemplatePassword" nzSize="large">
+        <input type="password" nz-input placeholder="Contraseña" nzSize="large" autocomplete=""/>
       </nz-input-group>
-      <ng-template #prefixTemplatePassword><span nz-icon nzType="lock" nzTheme="fill"></span></ng-template>
+      <ng-template #prefixTemplatePassword>
+        <span nz-icon nzType="lock" nzTheme="twotone" nzTwotoneColor="#00117d"></span>
+      </ng-template>
       <a class="forgot-password">¿Olvidaste tu contraseña?</a>
     </div>
 
-
-    <button class="login__form--button" nz-button nzType="primary" nzSize="large" nzShape="round">
+    <button class="login__form--button" nz-button nzType="primary" nzSize="large">
       Iniciar sesión
     </button>
 
@@ -29,12 +37,14 @@
       </span>
     </p>
 
-
     <div class="login__form--alternatives">
       <p>O inicia sesión con:</p>
       <div class="options">
-        <span nz-icon nzType="google-square" nzTheme="fill"></span>
-        <span nz-icon nzType="facebook" nzTheme="fill"></span>
+        <span nz-icon nzType="ng-zorro:facebook"></span>
+        <span nz-icon nzType="ng-zorro:google"></span>
+        <span nz-icon nzType="ng-zorro:linkedin"></span>
+        <span nz-icon nzType="ng-zorro:github"></span>
+        <span nz-icon nzType="ng-zorro:twitter"></span>
       </div>
     </div>
   </form>

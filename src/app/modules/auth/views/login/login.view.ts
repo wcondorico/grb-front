@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NzButtonComponent } from "ng-zorro-antd/button";
 import { NzInputDirective, NzInputGroupComponent } from "ng-zorro-antd/input";
-import { NzIconDirective } from "ng-zorro-antd/icon";
+import { NzIconDirective, NzIconService } from "ng-zorro-antd/icon";
 
 @Component({
   selector: 'app-login',
@@ -16,5 +16,9 @@ import { NzIconDirective } from "ng-zorro-antd/icon";
   styleUrl: './login.view.scss'
 })
 export class LoginView {
-
+  constructor(private iconService: NzIconService) {
+    this.iconService.fetchFromIconfont({
+      scriptUrl: 'https://at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
+    });
+  }
 }
