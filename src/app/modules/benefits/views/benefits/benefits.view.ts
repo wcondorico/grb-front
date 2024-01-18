@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import {NzButtonComponent, NzButtonSize} from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-benefits',
   standalone: true,
   imports: [
     NzButtonComponent,
-    NzIconModule
+    NzIconModule,
+    RouterLink
   ],
   templateUrl: './benefits.view.html',
   styleUrl: './benefits.view.scss'

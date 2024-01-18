@@ -1,11 +1,11 @@
 <header class="header">
   <div class="header__logo">
-    <img src="./assets/modules/benefits/logo.png" alt="">
+    <img src="./assets/modules/benefits/logo.png" alt="logo">
   </div>
   <nav class="header__nav">
-    <a href="">Precios</a>
-    <a href="">Contáctanos</a>
-    <button nz-button [nzSize]="size" nzType="primary">Iniciar Sesion</button>
+    <a href="" routerLink="/prices">Precios</a>
+    <a href="" routerLink="/contactus">Contáctanos</a>
+    <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesion</button>
   </nav>
 </header>
 
@@ -22,7 +22,7 @@
   </div>
   <div class="slogan__right">
     <div class="slogan__logo">
-      <img src="./assets/modules/benefits/logo.png" alt="">
+      <img src="./assets/modules/benefits/logo.png" alt="screen main">
     </div>
   </div>
 </article>
@@ -47,12 +47,12 @@
           est laborum</p>
       </div>
       <div class="screen">
-        <img src="./assets/modules/benefits/coca.png" alt="">
+        <img src="./assets/modules/benefits/coca.png" alt="screen feature">
       </div>
     </div>
     <div class="description__features--f2">
       <div class="screen">
-        <img src="./assets/modules/benefits/coca.png" alt="">
+        <img src="./assets/modules/benefits/coca.png" alt="screen feature">
       </div>
       <div class="text">
         <h3>Caract. 2</h3>
@@ -73,7 +73,7 @@
           est laborum</p>
       </div>
       <div class="screen">
-        <img src="./assets/modules/benefits/coca.png" alt="">
+        <img src="./assets/modules/benefits/coca.png" alt="screen feature">
       </div>
     </div>
   </section>
@@ -82,12 +82,13 @@
 
 <footer class="footer">
   <div class="footer__logo">
-    <img src="./assets/modules/benefits/coca.png">
+    <img src="./assets/modules/benefits/coca.png" alt="logo">
   </div>
   <div class="footer__text">
     <a href=""><span nz-icon nzType="copyright-circle" nzTheme="outline"></span>2024 RGB</a>
-    <a href="">Precios</a>
-    <a href="">Contactanos</a>
+    <a href="" routerLink="/prices">Precios</a>
+    <a href="" routerLink="/contactus">Contactanos</a>
+    <a href="" routerLink="/dashboard">log in</a>
   </div>
 </footer>
 
