@@ -1,5 +1,4 @@
-import { Routes } from '@angular/router';
-import {BenefitsModule} from "./modules/benefits/benefits.module";
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
 
