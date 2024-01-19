@@ -23,6 +23,4 @@ export class SignInHttp extends SignInRepository {
       }
     );
   }
-
-
 }
