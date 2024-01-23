@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {benefitsRoutes} from './benefits.routes';
-import {provideRouter} from "@angular/router";
+import { benefitsRoutes } from './benefits.routes';
+import { provideRouter } from "@angular/router";
 
 
 @NgModule({

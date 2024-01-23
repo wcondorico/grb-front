@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {NzIconDirective} from "ng-zorro-antd/icon";
-import {RouterLink} from "@angular/router";
+import { NzIconDirective } from "ng-zorro-antd/icon";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-footer',
