@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NzCardComponent} from "ng-zorro-antd/card";
+import { NzCardComponent } from "ng-zorro-antd/card";
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({

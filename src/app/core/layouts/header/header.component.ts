@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {NzButtonComponent, NzButtonSize} from "ng-zorro-antd/button";
-import {RouterLink} from "@angular/router";
+import { NzButtonComponent, NzButtonSize } from "ng-zorro-antd/button";
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-header',
   standalone: true,
