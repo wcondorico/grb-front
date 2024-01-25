@@ -14,17 +14,19 @@
 
   &__logo{
     width: 50px;
-    > img{
+    & > img{
       width: 100%;
     }
   }
 
   &__text{
     display: flex;
+    align-items: center;
     gap: 20px;
 
-    > a{
+    & > a, p{
       color: #999999;
+      margin: 0;
     }
   }
 }

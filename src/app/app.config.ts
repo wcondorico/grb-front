@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, LOCALE_ID} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -17,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideNzI18n(es_ES),
     importProvidersFrom(FormsModule),
     importProvidersFrom(HttpClientModule),
-    provideAnimations()
+    provideAnimations(),
+    {provide: LOCALE_ID, useValue: 'es-PEN' }
   ]
 };
