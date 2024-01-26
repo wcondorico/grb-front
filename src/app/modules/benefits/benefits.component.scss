@@ -1,4 +1,11 @@
-.container{
+html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.container {
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto auto 1fr auto;

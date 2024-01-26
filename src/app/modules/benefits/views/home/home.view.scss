@@ -1,100 +1,109 @@
-:host{
+:host {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-
-
-  .slogan{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  .opening {
     background-color: #DCE0FF;
-    height: 300px;
-    padding: 60px 80px;
-    gap: 5%;
+    display: flex;
+    justify-content: center;
+
+    .slogan {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      width: 1024px;
+      padding: 60px 80px;
+      gap: 10%;
 
 
-    &__left{
-      width: 55%;
+      &__left {
+        width: 55%;
+        height: 100%;
 
-      &--title h2{
-          color: #00117d;
-          font-weight: bold;
-          font-size: 45px;
-      }
+        &--title {
+          height: 100%;
 
-      &--buttons{
-        display: flex;
-        gap: 15px;
+          h2 {
+            color: #00117d;
+            font-weight: bold;
+            font-size: 35px;
+          }
+        }
 
-        [nz-button] {
-          width: 250px;
-          height: 40px;
-          margin-right: 8px;
-          margin-bottom: 12px;
-          border-radius: 10px;
-          box-shadow: 0.5px 0.5px 5px 1px rgba(0,0,0,0.31);
+        &--buttons {
+          display: flex;
+          gap: 15px;
+
+          [nz-button] {
+            width: 250px;
+            height: 40px;
+            margin-right: 8px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0.5px 0.5px 5px 1px rgba(0, 0, 0, 0.31);
+          }
         }
       }
-    }
 
-    &__right{
-      width: 40%;
+      &__right {
+        width: 40%;
 
-      img {
-        width: 100%;
+        &--logo > img {
+          width: 100%;
+        }
       }
     }
   }
 
-  .description{
+  .description {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin-bottom: 120px;
 
-    &__grb{
+    &__grb {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 40%;
       margin: 50px 0;
 
-      h2{
+      h2 {
         color: #00117d;
         font-weight: bold;
         font-size: 30px;
       }
     }
 
-    &__features{
+    &__features {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 60px;
 
-      h2{
+      h2 {
         color: #00117d;
         font-weight: bold;
         font-size: 30px;
         margin: 0;
       }
 
-      &--f1{
+      &--feature1 {
         display: flex;
         width: 70%;
         justify-content: center;
         align-items: center;
         gap: 40px;
 
-        .text{
+        .text {
           width: 50%;
 
-          > h3{
+          > h3 {
             color: #00117d;
             font-weight: bold;
             font-size: 20px;
@@ -102,26 +111,26 @@
           }
         }
 
-        .screen{
+        .screen {
           width: 50%;
 
-          > img{
+          > img {
             width: 100%;
           }
         }
       }
 
-      &--f2{
+      &--feature2 {
         display: flex;
         width: 70%;
         justify-content: center;
         align-items: center;
         gap: 40px;
 
-        .text{
+        .text {
           width: 50%;
 
-          > h3{
+          > h3 {
             color: #00117d;
             font-weight: bold;
             font-size: 20px;
@@ -129,26 +138,26 @@
           }
         }
 
-        .screen{
+        .screen {
           width: 50%;
 
-          > img{
+          > img {
             width: 100%;
           }
         }
       }
 
-      &--f3{
+      &--feature3 {
         display: flex;
         width: 70%;
         justify-content: center;
         align-items: center;
         gap: 40px;
 
-        .text{
+        .text {
           width: 50%;
 
-          > h3{
+          > h3 {
             color: #00117d;
             font-weight: bold;
             font-size: 20px;
@@ -156,17 +165,16 @@
           }
         }
 
-        .screen{
+        .screen {
           width: 50%;
 
-          > img{
+          > img {
             width: 100%;
           }
         }
       }
     }
   }
-
 }
 
 
