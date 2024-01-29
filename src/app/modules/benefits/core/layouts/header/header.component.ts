@@ -17,4 +17,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 })
 export class HeaderComponent {
   size: NzButtonSize = 'large';
+
+  closeNav(){
+
+  }
+
 }

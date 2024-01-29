@@ -1,32 +1,149 @@
-.header{
-  background-color: #242424;
-  width: 100%;
-  padding: 20px 80px;
+header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  background-color: #242424;
+  min-height: 64px;
 
-  &__logo{
-    width: 125px;
-    margin-left: 20px;
+  .header {
+    width: 1024px;
+    min-width: 320px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    img, a {
+    &__logo {
+      width: 106px;
+      height: 35px;
+
+      a {
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        height: 35px;
+      }
+    }
+
+    &__nav {
+      display: flex;
+      width: 400px;
+      justify-content: space-around;
+      align-items: center;
+
+      > a {
+        color: white;
+      }
+
+      [nz-button] {
+        border-radius: 10px;
+        box-shadow: 1px -1px 38px -1px rgba(0, 0, 0, 0.61);
+      }
+    }
+
+  }
+
+  .menu {
+    display: none;
+  }
+
+  #menu {
+    display: none;
+  }
+
+
+  //tablet
+  @media (max-width: 1024px) {
+
+    .header {
+      padding: 0;
+      min-width: 375px;
       width: 100%;
+
+      &__logo {
+        width: auto;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30px;
+
+        a {
+          width: 106px;
+          height: 35px;
+        }
+
+        img {
+          height: 35px;
+        }
+      }
+
+      &__nav {
+        background-color: #242424;
+        position: absolute;
+        right: 100%;
+        top: 64px;
+        flex-direction: column;
+        width: 100vw;
+        height: calc(100vh - 64px);
+        align-items: start;
+        padding: 10px 30px;
+        justify-content: start;
+        gap: 15px;
+        transition: all, .5s;
+        z-index: 1000;
+
+        > a {
+          padding: 10px 10px;
+        }
+
+        &--button {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          background-color: #191919;
+          padding: 15px;
+
+          [nz-button] {
+            width: 350px;
+
+          }
+        }
+      }
+
+      .menu {
+        display: flex;
+        color: white;
+        width: 64px;
+        height: 64px;
+        justify-content: center;
+        align-items: center;
+        margin-right: 30px;
+        cursor: pointer;
+
+        > span {
+          font-size: 30px;
+        }
+      }
+
+      #menu:checked ~ nav {
+          right: 0;
+      }
     }
   }
 
-  &__nav{
-    display: flex;
-    width: 400px;
-    justify-content: space-around;
-    align-items: center;
-    > a {
-      color: white;
-    }
 
-    [nz-button] {
-      border-radius: 10px;
-      box-shadow: 1px -1px 38px -1px rgba(0,0,0,0.61);
+  //laptop L
+  @media (min-width: 1280px) {
+    .header {
+      width: 1280px;
+      padding: 0 64px;
     }
   }
 }

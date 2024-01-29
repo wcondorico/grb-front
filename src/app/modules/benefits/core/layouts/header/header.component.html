@@ -1,10 +1,23 @@
-<header class="header">
-  <div class="header__logo">
-    <a href="/home"><img src="../../../../../../assets/modules/benefits/logo.png" alt="logo"></a>
+<header>
+  <div class="header">
+
+    <div class="header__logo">
+      <a routerLink="/home"><img src="../../../../../../assets/modules/benefits/logo.png" alt="logo"></a>
+    </div>
+    <input type="checkbox" id="menu">
+    <label class="menu" for="menu">
+      <span nz-icon nzType="menu" nzTheme="outline"></span>
+    </label>
+
+    <nav class="header__nav">
+      <a routerLink="/prices"><label for="menu">Precios</label></a>
+      <a routerLink="/contact-us" (click)="closeNav()">Contáctanos</a>
+      <div class="header__nav--button">
+        <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesion</button>
+      </div>
+    </nav>
+
   </div>
-  <nav class="header__nav">
-    <a routerLink="/prices">Precios</a>
-    <a routerLink="/contact-us">Contáctanos</a>
-    <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesion</button>
-  </nav>
 </header>
+s
+@
