@@ -3,9 +3,11 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  width: 100%;
 
-  body {
+  .mainContainer {
     width: 100%;
+    height: 100%;
 
     .opening {
       background-color: #DCE0FF;
@@ -232,9 +234,10 @@
   //tablet
   @media (max-width: 1024px) {
 
-    body {
+    .mainContainer {
       box-sizing: border-box;
       width: 100%;
+      margin-top: 64px;
 
       .opening {
         min-width: 375px;
@@ -393,7 +396,8 @@
   //mobile
   @media (max-width: 768px) {
 
-    body {
+    .mainContainer {
+      width: 100%;
 
       .opening {
         width: 100%;

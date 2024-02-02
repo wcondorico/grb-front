@@ -21,4 +21,7 @@ import { FooterComponent } from "./core/layouts/footer/footer.component";
   styleUrl: './benefits.component.scss'
 })
 export class BenefitsComponent {
+
+
+
 }

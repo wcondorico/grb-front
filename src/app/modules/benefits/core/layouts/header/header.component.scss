@@ -1,17 +1,15 @@
-header {
-  display: flex;
-  justify-content: center;
+.main-container {
   background-color: #242424;
-  min-height: 64px;
 
   .header {
-    width: 1024px;
+    width: 100%;
     min-width: 320px;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 64px;
+    min-height: 64px;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px 64px;
     align-items: center;
 
     &__logo {
@@ -30,9 +28,9 @@ header {
 
     &__nav {
       display: flex;
-      width: 400px;
       justify-content: space-around;
       align-items: center;
+      width: 400px;
 
       > a {
         color: white;
@@ -44,16 +42,14 @@ header {
       }
     }
 
+    &__nav-drop {
+      display: none;
+    }
   }
 
   .menu {
     display: none;
   }
-
-  #menu {
-    display: none;
-  }
-
 
   //tablet
   @media (max-width: 1024px) {
@@ -62,6 +58,10 @@ header {
       padding: 0;
       min-width: 375px;
       width: 100%;
+      position: fixed;
+      top: 0;
+      background-color: #242424;
+      z-index: 1000;
 
       &__logo {
         width: auto;
@@ -82,9 +82,13 @@ header {
       }
 
       &__nav {
+        display: none;
+      }
+
+      &__nav-drop {
+        display: flex;
         background-color: #242424;
-        position: absolute;
-        right: 100%;
+        position: fixed;
         top: 64px;
         flex-direction: column;
         width: 100vw;
@@ -93,11 +97,10 @@ header {
         padding: 10px 30px;
         justify-content: start;
         gap: 15px;
-        transition: all, .5s;
-        z-index: 1000;
 
         > a {
           padding: 10px 10px;
+          color: white;
         }
 
         &--button {
@@ -112,7 +115,7 @@ header {
 
           [nz-button] {
             width: 350px;
-
+            border-radius: 7px;
           }
         }
       }
@@ -125,15 +128,11 @@ header {
         justify-content: center;
         align-items: center;
         margin-right: 30px;
-        cursor: pointer;
 
         > span {
           font-size: 30px;
+          cursor: pointer;
         }
-      }
-
-      #menu:checked ~ nav {
-          right: 0;
       }
     }
   }

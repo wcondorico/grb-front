@@ -1,23 +1,30 @@
-<header>
+<section class="main-container">
   <div class="header">
-
     <div class="header__logo">
-      <a routerLink="/home"><img src="../../../../../../assets/modules/benefits/logo.png" alt="logo"></a>
+      <a routerLink="/home" (click)="isNotVisible()">
+        <img src="../../../../../../assets/modules/benefits/logo.png" alt="logo">
+      </a>
     </div>
-    <input type="checkbox" id="menu">
-    <label class="menu" for="menu">
-      <span nz-icon nzType="menu" nzTheme="outline"></span>
+    <label class="menu">
+      <span nz-icon nzType="menu" (click)="changeFlag()" nzTheme="outline"></span>
     </label>
 
     <nav class="header__nav">
-      <a routerLink="/prices"><label for="menu">Precios</label></a>
-      <a routerLink="/contact-us" (click)="closeNav()">Contáctanos</a>
+      <a routerLink="/prices">Precios</a>
+      <a routerLink="/contact-us">Contáctanos</a>
       <div class="header__nav--button">
-        <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesion</button>
+        <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesión</button>
       </div>
     </nav>
 
+    @if (this.showNav){
+      <nav class="header__nav-drop">
+        <a routerLink="/prices" (click)="isNotVisible()">Precios</a>
+        <a routerLink="/contact-us" (click)="isNotVisible()">Contáctanos</a>
+        <div class="header__nav-drop--button">
+          <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesión</button>
+        </div>
+      </nav>
+    }
   </div>
-</header>
-s
-@
+</section>
