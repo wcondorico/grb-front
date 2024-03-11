@@ -1,0 +1,30 @@
+<section class="main-container">
+  <div class="header">
+    <div class="header__logo">
+      <a routerLink="/home" (click)="isNotVisible()">
+        <img src="../../../../../../assets/modules/benefits/logo.png" alt="logo">
+      </a>
+    </div>
+    <label class="menu">
+      <span nz-icon nzType="menu" (click)="changeFlag()" nzTheme="outline"></span>
+    </label>
+
+    <nav class="header__nav">
+      <a routerLink="/prices">Precios</a>
+      <a routerLink="/contact-us">Contáctanos</a>
+      <div class="header__nav--button">
+        <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesión</button>
+      </div>
+    </nav>
+
+    @if (this.showNav){
+      <nav class="header__nav-drop">
+        <a routerLink="/prices" (click)="isNotVisible()">Precios</a>
+        <a routerLink="/contact-us" (click)="isNotVisible()">Contáctanos</a>
+        <div class="header__nav-drop--button">
+          <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesión</button>
+        </div>
+      </nav>
+    }
+  </div>
+</section>

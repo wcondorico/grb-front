@@ -1,0 +1,359 @@
+:host {
+
+  .mainContainer {
+    width: 100%;
+
+    .opening {
+      background-color: #DCE0FF;
+      display: flex;
+      justify-content: center;
+      height: 300px;
+
+      .slogan {
+        width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px;
+
+        &__left {
+          width: 475px;
+          height: 180px;
+
+          &--title {
+            height: 110px;
+
+            h2 {
+              color: #00117d;
+              font-weight: bold;
+              font-size: 35px;
+            }
+          }
+
+          &--buttons {
+            display: flex;
+            align-items: end;
+            height: 70px;
+            gap: 15px;
+
+            [nz-button] {
+              width: 250px;
+              height: 40px;
+              margin-right: 8px;
+              border-radius: 10px;
+              box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+
+        &__right {
+          display: flex;
+          align-items: center;
+
+          &--logo > img {
+            width: 400px;
+          }
+        }
+      }
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__grb {
+        width: 800px;
+        padding: 15px 30px;
+        margin: 30px auto;
+
+        h2 {
+          color: #00117d;
+          font-weight: bold;
+          font-size: 30px;
+          text-align: center;
+        }
+
+        p {
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+
+      &__features {
+        @mixin featureLap {
+          width: 1000px;
+          display: flex;
+          justify-content: space-between;
+          padding: 20px;
+
+          .text {
+            margin-bottom: 20px;
+            padding: 15px;
+
+            > h3 {
+              color: #00117d;
+              font-weight: bold;
+              font-size: 20px;
+              text-align: center;
+              margin-bottom: 15px;
+            }
+
+            > p {
+              text-align: center;
+            }
+          }
+
+          .screen {
+            height: auto;
+
+            > img {
+              width: 480px;
+            }
+          }
+        }
+
+        &--title {
+          padding: 15px;
+          margin-bottom: 50px;
+
+          h2 {
+            color: #00117d;
+            font-weight: bold;
+            font-size: 30px;
+            margin: 0;
+            text-align: center;
+          }
+        }
+
+        &--feature1 {
+          @include featureLap;
+        }
+
+        &--feature2 {
+          flex-direction: row-reverse;
+          @include featureLap;
+        }
+
+        &--feature3 {
+          @include featureLap;
+        }
+      }
+    }
+  }
+
+  //tablet
+  @media (max-width: 1024px) {
+
+    .mainContainer {
+      margin-top: 64px;
+
+      .opening {
+
+        .slogan {
+          width: auto;
+          max-width: 800px;
+          height: 300px;
+          padding: 20px 20px;
+
+          &__left {
+            display: flex;
+            flex-direction: column;
+            width: 385px;
+            padding: 20px 20px;
+
+            &--title {
+
+              > h2 {
+                font-size: 26px;
+              }
+            }
+          }
+
+          &__right {
+
+            &--logo {
+              display: flex;
+              align-items: center;
+              width: 320px;
+
+              > img {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .description {
+
+        &__grb {
+          width: auto;
+          max-width: 800px;
+          padding: 15px 40px;
+        }
+
+        &__features {
+          width: auto;
+          max-width: 800px;
+
+          @mixin featureTablet {
+            width: 100% ;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+
+            > .text {
+              width: auto;
+              margin-bottom: 0;
+              padding: 20px 30px;
+            }
+
+            > .screen {
+              height: auto;
+              display: flex;
+              justify-content: center;
+              padding: 25px 0;
+
+              > img {
+                width: 580px;
+              }
+            }
+          }
+
+          &--title {
+
+            h2 {
+              font-size: 26px;
+            }
+          }
+
+          &--feature1 {
+            @include featureTablet
+          }
+
+          &--feature2 {
+            @include featureTablet
+          }
+
+          &--feature3 {
+            @include featureTablet
+          }
+        }
+      }
+    }
+  }
+
+
+  //mobile
+  @media (max-width: 768px) {
+
+    .mainContainer {
+
+      .opening {
+        height: 350px;
+
+        .slogan {
+          flex-direction: column-reverse;
+          height: auto;
+          width: 100%;
+          min-width: 375px;
+          padding: 15px 15px;
+
+          &__left {
+            width: 375px;
+            height: 170px;
+            padding: 10px 20px;
+            gap: 0;
+            justify-content: initial;
+
+            &--title {
+              > h2 {
+                font-size: 24px;
+                text-align: center;
+              }
+            }
+
+            &--buttons {
+              justify-content: center;
+              height: 40px;
+
+              [nz-button] {
+                width: 150px;
+                height: 40px;
+                margin: 0;
+                box-shadow: 0.5px 0.5px 5px 1px rgba(0, 0, 0, 0.31);
+              }
+            }
+          }
+
+          &__right {
+            width: 340px;
+            height: 150px;
+            padding: 0 10px;
+          }
+        }
+      }
+
+      .description {
+
+        &__grb {
+          width: auto;
+          max-width: 630px;
+          min-width: 375px;
+          padding: 15px 40px;
+        }
+
+        &__features {
+          width: auto;
+          box-sizing: border-box;
+          max-width: 630px;
+
+          @mixin featuresMobile {
+            width: auto;
+            min-width: 375px;
+            padding: 0 10px;
+
+            > .text {
+              padding: 20px 10px;
+              margin: 0;
+            }
+
+            > .screen {
+              width: 355px;
+              padding-top: 0;
+              padding-bottom: 45px;
+
+              > img {
+                width: 355px;
+              }
+            }
+          }
+
+          &--title {
+            margin-bottom: 20px;
+
+            h2 {
+              font-size: 22px;
+            }
+          }
+
+          &--feature1 {
+            @include featuresMobile;
+          }
+
+          &--feature2 {
+            @include featuresMobile;
+          }
+
+          &--feature3 {
+            @include featuresMobile;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
