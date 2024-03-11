@@ -8,7 +8,7 @@ import { NzFormControlComponent, NzFormItemComponent } from "ng-zorro-antd/form"
 import { NgIf } from "@angular/common";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-sign-in',
   standalone: true,
   imports: [
     NzButtonComponent,
@@ -20,10 +20,10 @@ import { NgIf } from "@angular/common";
     NzFormControlComponent,
     NgIf
   ],
-  templateUrl: './login.view.html',
-  styleUrl: './login.view.scss'
+  templateUrl: './sign-in.view.html',
+  styleUrl: './sign-in.view.scss'
 })
-export class LoginView implements OnInit {
+export class SignInView implements OnInit {
 
   loginFormGroup!: FormGroup<{ email: FormControl<string>, password: FormControl<string> }>;
 

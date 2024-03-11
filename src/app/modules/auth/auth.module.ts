@@ -7,8 +7,11 @@ import { SignInHttp } from './infrastructure/http/sign-in.http';
 @NgModule({
   providers: [
     provideRouter(authRoutes),
-    { provide: SignInFacade,
-      useClass: SignInHttp },
+    {
+      provide: SignInFacade,
+      useClass: SignInHttp
+    },
   ],
 })
-export class AuthModule {}
+export class AuthModule {
+}
