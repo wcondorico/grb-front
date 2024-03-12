@@ -1,0 +1,56 @@
+{
+  "data/animals": {
+    "GET": {
+      "nameResponse": "AnimalsId",
+      "responses": [
+        {
+          "name": "AnimalsList",
+          "statusCode": "200",
+          "body": {
+            "example": "data get"
+          }
+        },
+        {
+          "name": "AnimalsId",
+          "statusCode": "200",
+          "body": {
+            "example": "data get id"
+          }
+        }
+      ]
+    },
+    "POST": {
+      "nameResponse": "AnimalsSave",
+      "responses": [
+        {
+          "name": "AnimalsSave",
+          "statusCode": "201",
+          "body": {
+            "example": "data post"
+          }
+        },
+        {
+          "name": "AnimalsError",
+          "statusCode": "400",
+          "body": {
+            "example": "data post error"
+          }
+        }
+      ]
+    }
+  },
+  "data/animals/:id": {
+    "GET": {
+      "nameResponse": "AnimalsId",
+      "responses": [
+        {
+          "name": "AnimalsId",
+          "statusCode": "404",
+          "body": {
+            "example": "data get for id"
+          }
+        }
+      ]
+    }
+  }
+}
