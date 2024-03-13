@@ -5,7 +5,6 @@ import { NzIconDirective } from "ng-zorro-antd/icon";
 import { HeaderComponent } from "./core/layouts/header/header.component";
 import { FooterComponent } from "./core/layouts/footer/footer.component";
 
-
 @Component({
   selector: 'app-benefits',
   standalone: true,
@@ -21,7 +20,6 @@ import { FooterComponent } from "./core/layouts/footer/footer.component";
   styleUrl: './benefits.component.scss'
 })
 export class BenefitsComponent {
-
 
 
 }

@@ -13,7 +13,7 @@
       <a routerLink="/prices">Precios</a>
       <a routerLink="/contact-us">Contáctanos</a>
       <div class="header__nav--button">
-        <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesión</button>
+        <button nz-button [nzSize]="size" nzType="primary" routerLink="/auth">Iniciar Sesión</button>
       </div>
     </nav>
 
@@ -22,7 +22,7 @@
         <a routerLink="/prices" (click)="isNotVisible()">Precios</a>
         <a routerLink="/contact-us" (click)="isNotVisible()">Contáctanos</a>
         <div class="header__nav-drop--button">
-          <button nz-button [nzSize]="size" nzType="primary" routerLink="/dashboard">Iniciar Sesión</button>
+          <button nz-button [nzSize]="size" nzType="primary" routerLink="/auth">Iniciar Sesión</button>
         </div>
       </nav>
     }
