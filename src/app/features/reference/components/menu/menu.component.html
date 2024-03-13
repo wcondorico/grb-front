@@ -1,0 +1,32 @@
+    <div class="wrapper">
+
+      <ul nz-menu nzMode="inline"  [nzInlineCollapsed]="isCollapsed">
+        <li
+          nz-menu-item
+          nz-tooltip
+          nzTooltipPlacement="right"
+          [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
+        >
+          <span nz-icon nzType="mail"></span>
+          <span>All references</span>
+        </li>
+        <li
+          nz-menu-item
+          nz-tooltip
+          nzTooltipPlacement="right"
+          [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
+        >
+          <span nz-icon nzType="mail"></span>
+          <span>Recent add</span>
+        </li>
+        <li
+          nz-menu-item
+          nz-tooltip
+          nzTooltipPlacement="right"
+          [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
+        >
+          <span nz-icon nzType="mail"></span>
+          <span>Recent read</span>
+        </li>
+      </ul>
+    </div>
