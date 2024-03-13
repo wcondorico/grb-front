@@ -1,0 +1,14 @@
+
+      .wrapper {
+        width: 100%;
+
+        [nz-menu] {
+          background-color: #d5dffc;
+          font-size: 18px;
+        }
+
+      }
+
+      button {
+        margin-bottom: 12px;
+      }

@@ -1,13 +1,24 @@
 <section class="side">
   <div class="side__logo">
-
+    <span nz-icon nzType="ng-zorro:grb"></span>
+    <h3>GRB</h3>
   </div>
 
   <div class="references">
+    <div class="references__button">
+      <button nz-button nzType="primary" [nzSize]="size" nzShape="round">
+        <span nz-icon nzType="upload"></span>
+        New Reference
+      </button>
+    </div>
 
+    <div class="references__menu">
+      <app-menu></app-menu>
+    </div>
   </div>
 
   <div class="side__user">
-
+    <nz-avatar nzIcon="user"></nz-avatar>
+    <p>UserName</p>
   </div>
 </section>

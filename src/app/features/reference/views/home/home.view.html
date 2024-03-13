@@ -1,22 +1,26 @@
 <div class="home">
   <div class="main-container">
-    <div class="main-container__title">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="title">
+      <div class="title__left">All References</div>
+      <!--  <div class="title__buttons">Buttons</div>   -->
+
+      <div class="title__rigth">
+        <div class="title__search">
+          <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+            <input type="text" nz-input placeholder="input search text" />
+          </nz-input-group>
+          <ng-template #suffixIconButton>
+            <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
+          </ng-template>
+        </div>
+
+        <div class="title__tag">
+          <span nz-icon nzType="tags" nzTheme="outline"></span>
+          <p>TAG</p>
+        </div>
+      </div>
     </div>
 
-    <div class="main-container__header">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="main-container__row">
-
-    </div>
+    <app-table></app-table>
   </div>
 </div>
