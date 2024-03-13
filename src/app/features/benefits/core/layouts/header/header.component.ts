@@ -1,8 +1,8 @@
 import { Component, inject, Renderer2 } from '@angular/core';
-import { NzButtonComponent, NzButtonSize } from "ng-zorro-antd/button";
 import { RouterLink } from "@angular/router";
+
+import { NzButtonComponent, NzButtonSize } from "ng-zorro-antd/button";
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NgClass, NgStyle } from "@angular/common";
 
 
 @Component({
@@ -12,8 +12,6 @@ import { NgClass, NgStyle } from "@angular/common";
     NzButtonComponent,
     RouterLink,
     NzIconModule,
-    NgClass,
-    NgStyle
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
