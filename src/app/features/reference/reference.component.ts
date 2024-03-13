@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from "./core/layouts/sidebar/sidebar.component";
-import { MainComponent } from "./core/layouts/main/main.component";
+import { RouterOutlet } from "@angular/router";
+import { HomeView } from "./views/home/home.view";
 
 @Component({
-    selector: 'app-reference',
-    standalone: true,
-    templateUrl: './reference.component.html',
-    styleUrl: './reference.component.scss',
-    imports: [SidebarComponent, MainComponent]
+  selector: 'app-reference',
+  standalone: true,
+  imports: [
+    SidebarComponent,
+    RouterOutlet,
+    HomeView
+  ],
+  templateUrl: './reference.component.html',
+  styleUrl: './reference.component.scss'
 })
 export class ReferenceComponent {
 

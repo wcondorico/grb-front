@@ -1,0 +1,36 @@
+:host {
+
+  .side {
+    width: 240px;
+    height: 100%;
+    background-color: blue;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &__logo {
+      background-color: #242424;
+      border-radius: 5px;
+      width: 210px;
+      height: 70px;
+
+    }
+
+    .references {
+      background-color: #242424;
+      border-radius: 5px;
+      width: 210px;
+      height: 570px;
+    }
+
+    &__user {
+      background-color: #242424;
+      border-radius: 5px;
+      width: 210px;
+      height: 60px;
+    }
+
+  }
+
+}
