@@ -1,0 +1,401 @@
+{
+  "references": {
+    "GET": {
+      "nameResponse": "getAll",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "getAll",
+          "statusCode": "200",
+          "body": [
+            {
+              "id": 24,
+              "title": "tituslo tag",
+              "dateOfPublication": null,
+              "editorial": null,
+              "publicationPlace": null,
+              "note": "NoteUpdate ed",
+              "createAt": "2024-02-03T09:23:23.591Z",
+              "referenceAuthor": [
+                {
+                  "id": 28,
+                  "createAt": "2024-02-03T09:23:23.591Z",
+                  "author": {
+                    "id": 1,
+                    "name": "Yo el boster",
+                    "createAt": "2024-01-25T21:27:28.089Z"
+                  }
+                },
+                {
+                  "id": 30,
+                  "createAt": "2024-02-03T09:25:12.464Z",
+                  "author": {
+                    "id": 6,
+                    "name": "Alejandro el bosteao",
+                    "createAt": "2024-01-25T21:27:28.089Z"
+                  }
+                },
+                {
+                  "id": 31,
+                  "createAt": "2024-02-03T09:25:49.049Z",
+                  "author": {
+                    "id": 1,
+                    "name": "Yo el boster",
+                    "createAt": "2024-01-25T21:27:28.089Z"
+                  }
+                }
+              ],
+              "referenceTag": [
+                {
+                  "id": 7,
+                  "createAt": "2024-02-03T09:42:54.619Z",
+                  "tag": {
+                    "id": 3,
+                    "name": "Estadistica",
+                    "color": "#000001",
+                    "createAt": "2024-01-30T21:52:09.425Z"
+                  }
+                }
+              ]
+            },
+            {
+              "id": 26,
+              "title": "tituslo prb",
+              "dateOfPublication": null,
+              "editorial": null,
+              "publicationPlace": null,
+              "note": "NoteUpdate ed",
+              "createAt": "2024-02-08T10:22:18.395Z",
+              "referenceAuthor": [
+                {
+                  "id": 32,
+                  "createAt": "2024-02-08T10:22:18.395Z",
+                  "author": {
+                    "id": 1,
+                    "name": "Yo el boster",
+                    "createAt": "2024-01-25T21:27:28.089Z"
+                  }
+                },
+                {
+                  "id": 33,
+                  "createAt": "2024-02-08T10:22:18.395Z",
+                  "author": {
+                    "id": 7,
+                    "name": "Luis el leder",
+                    "createAt": "2024-01-30T08:18:05.320Z"
+                  }
+                },
+                {
+                  "id": 36,
+                  "createAt": "2024-02-08T10:28:52.120Z",
+                  "author": {
+                    "id": 1,
+                    "name": "Yo el boster",
+                    "createAt": "2024-01-25T21:27:28.089Z"
+                  }
+                }
+              ],
+              "referenceTag": [
+                {
+                  "id": 8,
+                  "createAt": "2024-02-08T10:22:18.395Z",
+                  "tag": {
+                    "id": 2,
+                    "name": "Data Science",
+                    "color": "#000001",
+                    "createAt": "2024-01-30T21:51:50.714Z"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "POST": {
+      "nameResponse": "create",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "create",
+          "statusCode": "201",
+          "body": {
+            "id": 27,
+            "title": "PruebaMocks",
+            "dateOfPublication": null,
+            "editorial": null,
+            "publicationPlace": null,
+            "note": "zZzZzZ",
+            "createAt": "2024-03-13T02:17:55.851Z",
+            "referenceAuthor": [
+              {
+                "id": 38,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "author": {
+                  "id": 1,
+                  "name": "Yo el boster",
+                  "createAt": "2024-01-25T21:27:28.089Z"
+                }
+              },
+              {
+                "id": 39,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "author": {
+                  "id": 7,
+                  "name": "Luis el leder",
+                  "createAt": "2024-01-30T08:18:05.320Z"
+                }
+              }
+            ],
+            "referenceTag": [
+              {
+                "id": 12,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "tag": {
+                  "id": 2,
+                  "name": "Data Science",
+                  "color": "#000001",
+                  "createAt": "2024-01-30T21:51:50.714Z"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ErrTitleAlreadyExist",
+          "statusCode": "409",
+          "body": {
+            "message": "title already exists",
+            "error": "Conflict",
+            "statusCode": 409
+          }
+        },
+        {
+          "name": "ErrTitleIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "title must be a string"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        }
+      ]
+    }
+  },
+  "references/:id": {
+    "GET": {
+      "nameResponse": "getById",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "getById",
+          "statusCode": "200",
+          "body": {
+            "id": 27,
+            "title": "PruebaMocks",
+            "dateOfPublication": null,
+            "editorial": null,
+            "publicationPlace": null,
+            "note": "zZzZzZ",
+            "createAt": "2024-03-13T02:17:55.851Z",
+            "referenceAuthor": [
+              {
+                "id": 38,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "author": {
+                  "id": 1,
+                  "name": "Yo el boster",
+                  "createAt": "2024-01-25T21:27:28.089Z"
+                }
+              },
+              {
+                "id": 39,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "author": {
+                  "id": 7,
+                  "name": "Luis el leder",
+                  "createAt": "2024-01-30T08:18:05.320Z"
+                }
+              }
+            ],
+            "referenceTag": [
+              {
+                "id": 12,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "tag": {
+                  "id": 2,
+                  "name": "Data Science",
+                  "color": "#000001",
+                  "createAt": "2024-01-30T21:51:50.714Z"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ErrReferenceNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "Reference doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        }
+      ]
+    },
+    "PUT": {
+      "nameResponse": "update",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "update",
+          "statusCode": "200",
+          "body":{
+            "id": 27,
+            "title": "PruebaMocks Edit",
+            "dateOfPublication": null,
+            "editorial": null,
+            "publicationPlace": null,
+            "note": "NoteUpdate ed",
+            "createAt": "2024-03-13T02:17:55.851Z",
+            "referenceAuthor": [
+              {
+                "id": 38,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "author": {
+                  "id": 1,
+                  "name": "Yo el boster",
+                  "createAt": "2024-01-25T21:27:28.089Z"
+                }
+              },
+              {
+                "id": 39,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "author": {
+                  "id": 7,
+                  "name": "Luis el leder",
+                  "createAt": "2024-01-30T08:18:05.320Z"
+                }
+              }
+            ],
+            "referenceTag": [
+              {
+                "id": 12,
+                "createAt": "2024-03-13T02:17:55.851Z",
+                "tag": {
+                  "id": 2,
+                  "name": "Data Science",
+                  "color": "#000001",
+                  "createAt": "2024-01-30T21:51:50.714Z"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ErrTitleWithThatNameAlreadyExist",
+          "statusCode": "409",
+          "body": {
+            "message": "title whit that name already exists",
+            "error": "Conflict",
+            "statusCode": 409
+          }
+        },
+        {
+          "name": "ErrDataArraysIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "createReferenceAuthors must be an array",
+              "updateReferenceAuthors must be an array",
+              "deleteReferenceAuthors must be an array",
+              "createReferenceTags must be an array",
+              "updateReferenceTags must be an array",
+              "deleteReferenceTags must be an array"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        },
+        {
+          "name": "ErrTitleIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "title must be a string"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        }
+      ]
+    },
+    "DELETE": {
+      "nameResponse": "delete",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "delete",
+          "statusCode": "200",
+          "body": {
+            "id": 27,
+            "title": "PruebaMocks Edit",
+            "dateOfPublication": null,
+            "editorial": null,
+            "publicationPlace": null,
+            "note": "NoteUpdate ed",
+            "createAt": "2024-03-13T02:17:55.851Z",
+            "referenceAuthor": [],
+            "referenceTag": []
+          }
+        },
+        {
+          "name": "ErrReferenceNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "Reference doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        }
+      ]
+    }
+  }
+}

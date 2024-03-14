@@ -1,0 +1,195 @@
+{
+  "roles": {
+    "GET": {
+      "nameResponse": "getAll",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "getAll",
+          "statusCode": "200",
+          "body": [
+            {
+              "id": 1,
+              "name": "Master",
+              "createAt": "2024-03-13T08:01:08.598Z"
+            },
+            {
+              "id": 2,
+              "name": "Gold",
+              "createAt": "2024-03-13T08:01:21.743Z"
+            },
+            {
+              "id": 3,
+              "name": "Silver",
+              "createAt": "2024-03-13T08:01:27.241Z"
+            }
+          ]
+        }
+      ]
+    },
+    "POST": {
+      "nameResponse": "create",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "create",
+          "statusCode": "201",
+          "body":{
+            "id": 3,
+            "name": "Silver",
+            "createAt": "2024-03-13T08:01:27.241Z"
+          }
+        },
+        {
+          "name": "ErrRoleAlreadyExist",
+          "statusCode": "409",
+          "body": {
+            "message": "Role already exists",
+            "error": "Conflict",
+            "statusCode": 409
+          }
+        },
+        {
+          "name": "ErrNameIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "name must be a string"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        }
+      ]
+    }
+  },
+  "roles/:id": {
+    "GET": {
+      "nameResponse": "ErrRoleNoExist",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "getById",
+          "statusCode": "200",
+          "body": {
+            "id": 3,
+            "name": "Silver",
+            "createAt": "2024-03-13T08:01:27.241Z"
+          }
+        },
+        {
+          "name": "ErrRoleNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "role doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        }
+      ]
+    },
+    "PUT": {
+      "nameResponse": "update",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "update",
+          "statusCode": "200",
+          "body": {
+            "id": 3,
+            "name": "Silver Edit",
+            "createAt": "2024-03-13T08:01:27.241Z"
+          }
+        },
+        {
+          "name": "ErrRoleNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "role doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        },
+        {
+          "name": "ErrRoleWithThatNameAlreadyExist",
+          "statusCode": "404",
+          "body": {
+            "message": "role with that name already exists",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        },
+        {
+          "name": "ErrNameIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "name must be a string"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        }
+      ]
+    },
+    "DELETE": {
+      "nameResponse": "delete",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "delete",
+          "statusCode": "200",
+          "body": {
+            "id": 3,
+            "name": "Silver Edit",
+            "createAt": "2024-03-13T08:01:27.241Z"
+          }
+        },
+        {
+          "name": "ErrRoleNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "role doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        }
+      ]
+    }
+  }
+}

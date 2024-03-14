@@ -1,0 +1,242 @@
+{
+  "tags": {
+    "GET": {
+      "nameResponse": "getAll",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "getAll",
+          "statusCode": "200",
+          "body": [
+            {
+              "id": 1,
+              "name": "Machine Learning",
+              "color": "#000000",
+              "createAt": "2024-01-30T21:51:02.852Z"
+            },
+            {
+              "id": 2,
+              "name": "Data Science",
+              "color": "#000001",
+              "createAt": "2024-01-30T21:51:50.714Z"
+            }
+          ]
+        }
+      ]
+    },
+    "POST": {
+      "nameResponse": "create",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "create",
+          "statusCode": "201",
+          "body": {
+            "id": 5,
+            "name": "Salud",
+            "color": "#000002",
+            "createAt": "2024-03-13T05:00:15.164Z"
+          }
+        },
+        {
+          "name": "ErrTagAlreadyExist",
+          "statusCode": "409",
+          "body": {
+            "message": "tag already exists",
+            "error": "Conflict",
+            "statusCode": 409
+          }
+        },
+        {
+          "name": "ErrColor&NameIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "name must be a string",
+              "The color must be a 6-character hexadecimal code."
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        },
+        {
+          "name": "ErrColorIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "The color must be a 6-character hexadecimal code."
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        },
+        {
+          "name": "ErrNameIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "name must be a string"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        }
+      ]
+    }
+  },
+  "tags/:id": {
+    "GET": {
+      "nameResponse": "getById",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "getById",
+          "statusCode": "200",
+          "body": {
+            "id": 5,
+            "name": "Salud",
+            "color": "#000002",
+            "createAt": "2024-03-13T05:00:15.164Z"
+          }
+        },
+        {
+          "name": "ErrTagNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "tag doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        }
+      ]
+    },
+    "PUT": {
+      "nameResponse": "update",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "update",
+          "statusCode": "200",
+          "body": {
+            "id": 5,
+            "name": "Edit Tag",
+            "color": "#000123",
+            "createAt": "2024-03-13T05:00:15.164Z"
+          }
+        },
+        {
+          "name": "ErrTagNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "tag doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        },
+        {
+          "name": "ErrTagWithThatNameAlreadyExist",
+          "statusCode": "404",
+          "body": {
+            "message": "tag with that name already exists",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        },
+        {
+          "name": "ErrName&ColorIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "name must be a string",
+              "The color must be a 6-character hexadecimal code."
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        },
+        {
+          "name": "ErrColorIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "The color must be a 6-character hexadecimal code."
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        },
+        {
+          "name": "ErrNameIsMiss",
+          "statusCode": "400",
+          "body": {
+            "message": [
+              "name must be a string"
+            ],
+            "error": "Bad Request",
+            "statusCode": 400
+          }
+        }
+      ]
+    },
+    "DELETE": {
+      "nameResponse": "delete",
+      "responses": [
+        {
+          "name": "Unauthorized",
+          "statusCode": "401",
+          "body": {
+            "message": "Unauthorized",
+            "statusCode": 401
+          }
+        },
+        {
+          "name": "delete",
+          "statusCode": "200",
+          "body": {
+            "id": 5,
+            "name": "Edit Tag",
+            "color": "#000123",
+            "createAt": "2024-03-13T05:00:15.164Z"
+          }
+        },
+        {
+          "name": "ErrTagNoExist",
+          "statusCode": "404",
+          "body": {
+            "message": "tag doesn't exist",
+            "error": "Not Found",
+            "statusCode": 404
+          }
+        }
+      ]
+    }
+  }
+}
