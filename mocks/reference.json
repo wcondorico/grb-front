@@ -357,9 +357,6 @@
             "error": "Bad Request",
             "statusCode": 400
           }
-        },
-        {
-
         }
       ]
     },
