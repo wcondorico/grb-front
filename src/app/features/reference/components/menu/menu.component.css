@@ -1,14 +1,20 @@
+.wrapper {
+  width: 100%;
 
-      .wrapper {
-        width: 100%;
+  [nz-menu] {
+    background-color: #acb7d8;
+    font-size: 18px;
+    border: 0;
+    
+    > li {
+      border-radius: 5px;
+    }
 
-        [nz-menu] {
-          background-color: #d5dffc;
-          font-size: 18px;
-        }
+    > li:hover {
+        background-color: #96a0c4;
+        color: rgb(238, 238, 238);
+    }
 
-      }
-
-      button {
-        margin-bottom: 12px;
-      }
+  
+  }
+}

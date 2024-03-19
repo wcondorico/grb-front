@@ -1,28 +1,30 @@
 :host {
-
+  background-color: #acb7d8;
+  padding: 0 8px;
+  box-shadow: 0.5px 0px 15px 5px rgba(0,0,0,0.20);
+  
   .side {
-    width: 240px;
+    width: 220px;
     height: 100%;
-    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-
     &__logo {
       border-radius: 5px;
-      width: 210px;
+      width: 100%;
       height: 70px;
+      padding: 10px 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      border-bottom: #c8cde0 solid;
 
       & > span {
-        font-size: 70px;
+        font-size: 50px;
       }
 
       & > h3 {
-        font-size: 55px;
+        font-size: 40px;
         color: #00117d;
         font-weight: bold;
         margin: 0;
@@ -30,10 +32,9 @@
     }
 
     .references {
-      background-color: #d5dffc;
       border-radius: 5px;
-      width: 210px;
-      height: 570px;
+      width: 100%;
+      height: 630px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,7 +48,10 @@
         margin-bottom: 15px;
 
         & > button {
-          background-color: #a6b2fb;
+          background-color: rgb(141, 147, 186);
+          border: 0;
+          width: 100%;
+          border-radius: 10px;
         }
       }
 
@@ -57,22 +61,65 @@
     }
 
     &__user {
-      background-color: #d5dffc;
-      border-radius: 5px;
-      width: 210px;
-      height: 60px;
-      display: flex;
-      align-items: center;;
-      padding-inline: 30px;
-      gap: 20px;
-
-      >p{
-        margin: 0;
-        font-weight: bold;
+      width: 100%;
+      height: 50px;
+      z-index: 2;
+      :hover {
+        background-color: #7782a4;
       }
 
+      > button {
+        border: 0;
+        background-color: #95a0c2;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;;
+        padding-inline: 15px;
+        gap: 20px;
+        cursor: pointer;
+  
+        > p {
+          margin: 0;
+          font-weight: bold;
+        }
+  
+        > span {
+            margin-right: 6px;
+            font-size: 22px;
+            color: #c8cde0;
+        }
+      }
+
+      .list {
+        position: absolute;
+        padding-bottom: 5px;
+        bottom: 60px;
+        border-radius: 0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        z-index: 11;
+        background-color: #95a0c2;
+
+        &__item {
+          width: 220px;
+          height: 40px;
+          padding: 5px;
+          padding-inline: 20px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          color: white;
+          opacity: 0.9;
+          font-weight: semibold;
+          
+          :hover{
+            background-color: #697496;
+          }
+        }
+      }
     }
-
   }
-
 }

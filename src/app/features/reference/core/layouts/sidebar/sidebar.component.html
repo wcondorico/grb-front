@@ -8,7 +8,7 @@
     <div class="references__button">
       <button nz-button nzType="primary" [nzSize]="size" nzShape="round">
         <span nz-icon nzType="upload"></span>
-        New Reference
+        Nueva Referencia
       </button>
     </div>
 
@@ -18,7 +18,18 @@
   </div>
 
   <div class="side__user">
-    <nz-avatar nzIcon="user"></nz-avatar>
-    <p>UserName</p>
+    
+    <button (click)="(changeShowListUser())"   [style.background-color]="showListUser ? '#697496':'#95a0c2'">
+      <nz-avatar nzIcon="user"></nz-avatar>
+      <p>UserName</p>
+      <span nz-icon [nzType]="'setting'" [nzTheme]="'fill'"></span>
+    </button>
+    @if (showListUser) {
+      <div class="list">
+        <div class="list__item">opcion 1</div>
+        <div class="list__item">opcion 2</div>
+        <div class="list__item">opcion 3</div>
+      </div>
+    }
   </div>
 </section>

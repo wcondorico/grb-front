@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from "./core/layouts/sidebar/sidebar.component";
 import { RouterOutlet } from "@angular/router";
-import { HomeView } from "./views/home/home.view";
+import { HomeView } from "./views/all-reference/home.view";
 @Component({
   selector: 'app-reference',
   standalone: true,

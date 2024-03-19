@@ -1,32 +1,17 @@
     <div class="wrapper">
 
-      <ul nz-menu nzMode="inline"  [nzInlineCollapsed]="isCollapsed">
-        <li
-          nz-menu-item
-          nz-tooltip
-          nzTooltipPlacement="right"
-          [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
-        >
-          <span nz-icon nzType="mail"></span>
-          <span>All references</span>
+      <ul nz-menu nzMode="inline" nzTheme="dark" >
+        <li nz-menu-item>
+          <span nz-icon nzType="book"></span>
+          <span>Referencias</span>
         </li>
-        <li
-          nz-menu-item
-          nz-tooltip
-          nzTooltipPlacement="right"
-          [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
-        >
-          <span nz-icon nzType="mail"></span>
-          <span>Recent add</span>
+        <li nz-menu-item>
+          <span nz-icon nzType="tag"></span>
+          <span>Etiquetas</span>
         </li>
-        <li
-          nz-menu-item
-          nz-tooltip
-          nzTooltipPlacement="right"
-          [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
-        >
-          <span nz-icon nzType="mail"></span>
-          <span>Recent read</span>
+        <li nz-menu-item>
+          <span nz-icon nzType="user"></span>
+          <span>Autores</span>
         </li>
       </ul>
     </div>
