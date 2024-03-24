@@ -9,6 +9,10 @@
     > li {
       border-radius: 5px;
     }
+    
+    .ant-menu-item-selected {
+      background-color: #7a84a4;
+    }
 
     > li:hover {
         background-color: #96a0c4;

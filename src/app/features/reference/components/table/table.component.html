@@ -1,36 +1,54 @@
-<div class="main-container">
-  <nz-table
-    #rowSelectionTable
-    nzShowSizeChanger
-    [nzData]="listOfData"
-    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
-  >
+
+
+  <nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
     <thead>
       <tr>
-        <th 
-          [nzSelections]="listOfSelection"
-          [(nzChecked)]="checked"
-          [nzIndeterminate]="indeterminate"
-          (nzCheckedChange)="onAllChecked($event)"
-          class="height"
-        ></th>
-        <th class="height">Title</th>
-        <th class="height">Year</th>
-        <th class="height">Author</th>
-        <th class="height">Added</th>
-        <th class="height">File</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of rowSelectionTable.data">
-        <td
-          [nzChecked]="setOfCheckedId.has(data.id)"
-          (nzCheckedChange)="onItemChecked(data.id, $event)"
-        ></td>
+      <th nzCustomFilter>
+        Title
+        <nz-filter-trigger
+        [(nzVisible)]="visible"
+          [nzActive]="searchValue.length > 0"
+          [nzDropdownMenu]="menu"
+          >
+          <span nz-icon nzType="search"></span>
+        </nz-filter-trigger>
+      </th>
+      <th>Year</th>
+      <th>Author</th>
+      <th>Added</th>
+      <th>File</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of nzTable.data; track data) {
+      <tr>
         <td>{{ data.name }}</td>
         <td>{{ data.age }}</td>
         <td>{{ data.address }}</td>
       </tr>
-    </tbody>
-  </nz-table>
+    }
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input
+      type="text"
+      nz-input
+      placeholder="Search name"
+      [(ngModel)]="searchValue"
+      />
+      <button
+      nz-button
+      nzSize="small"
+      nzType="primary"
+      (click)="search()"
+      class="search-button"
+      >
+      Search
+    </button>
+    <button nz-button nzSize="small" (click)="reset()">Reset</button>
+  </div>
 </div>
+</nz-dropdown-menu>
+

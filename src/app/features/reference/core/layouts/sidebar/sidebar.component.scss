@@ -8,6 +8,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+
     &__logo {
       border-radius: 5px;
       width: 100%;
@@ -48,10 +49,20 @@
         margin-bottom: 15px;
 
         & > button {
-          background-color: rgb(141, 147, 186);
+          background-color: #96a0c4;
           border: 0;
           width: 100%;
           border-radius: 10px;
+        }
+
+        & > button:after {
+          animation: glow 0.3s linear;
+        }
+
+        @keyframes glow {
+          0% { box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+          50% { box-shadow: 0 0 10px rgba(0,0,0,0.8); }
+          100% { box-shadow: 0 0 5px rgba(0,0,0,0.5); }
         }
       }
 
@@ -60,14 +71,10 @@
       }
     }
 
-    &__user {
+    &__user{
       width: 100%;
       height: 50px;
-      z-index: 2;
-      :hover {
-        background-color: #7782a4;
-      }
-
+      
       > button {
         border: 0;
         background-color: #95a0c2;
@@ -80,10 +87,11 @@
         padding-inline: 15px;
         gap: 20px;
         cursor: pointer;
-  
+
         > p {
           margin: 0;
           font-weight: bold;
+          
         }
   
         > span {

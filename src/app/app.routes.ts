@@ -8,5 +8,14 @@ export const routes: Routes = [
   {
     path: 'reference',
     loadChildren: () => import('./features/reference/reference.module').then(m => m.ReferenceModule)
+  },
+  {
+    path: 'benefits',
+    loadChildren: () => import('./features/benefits/benefits.module').then(m => m.BenefitsModule)
+  },
+  {
+    path: '',
+    redirectTo: '/benefits',
+    pathMatch: 'full'
   }
 ];

@@ -1,17 +1,23 @@
     <div class="wrapper">
 
       <ul nz-menu nzMode="inline" nzTheme="dark" >
-        <li nz-menu-item>
-          <span nz-icon nzType="book"></span>
-          <span>Referencias</span>
+        <li nz-menu-item nzSelected>
+          <a routerLink="all-references">
+            <span nz-icon nzType="book" nzSelected></span>
+            <span>Referencias</span>
+          </a>
+        </li>
+        <li nz-menu-item routerLink="tags">
+          <a routerLink="tags">  
+            <span nz-icon nzType="tag"></span>
+            <span>Etiquetas</span>
+          </a>
         </li>
         <li nz-menu-item>
-          <span nz-icon nzType="tag"></span>
-          <span>Etiquetas</span>
-        </li>
-        <li nz-menu-item>
-          <span nz-icon nzType="user"></span>
-          <span>Autores</span>
+          <a routerLink="authors">
+            <span nz-icon nzType="user"></span>
+            <span>Autores</span>
+          </a>
         </li>
       </ul>
     </div>
