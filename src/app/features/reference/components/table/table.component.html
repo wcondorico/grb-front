@@ -1,31 +1,32 @@
-
-
-  <nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
-    <thead>
-      <tr>
+<nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+  <thead>
+    <tr>
       <th nzCustomFilter>
-        Title
+        Título
         <nz-filter-trigger
-        [(nzVisible)]="visible"
+          [(nzVisible)]="visible"
           [nzActive]="searchValue.length > 0"
           [nzDropdownMenu]="menu"
-          >
+        >
           <span nz-icon nzType="search"></span>
         </nz-filter-trigger>
       </th>
-      <th>Year</th>
-      <th>Author</th>
-      <th>Added</th>
-      <th>File</th>
+      <th>Año</th>
+      <th>Autor</th>
+      <th>Etiqueta</th>
+      <th>Agregado</th>
+      <th>Archivo</th>
     </tr>
   </thead>
   <tbody>
     @for (data of nzTable.data; track data) {
-      <tr>
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-      </tr>
+    <tr>
+      <td>{{ data.title }}</td>
+      <td>{{ data.dateOfPublication }}</td>
+      <td>{{ getAuthorName(data).join(', ') }}</td>
+      <td>{{ getTagName(data).join(', ') }}</td>
+      <td>{{ data.createAt | date:'medium' }}</td>
+    </tr>
     }
   </tbody>
 </nz-table>
@@ -33,22 +34,21 @@
   <div class="ant-table-filter-dropdown">
     <div class="search-box">
       <input
-      type="text"
-      nz-input
-      placeholder="Search name"
-      [(ngModel)]="searchValue"
+        type="text"
+        nz-input
+        placeholder="Search name"
+        [(ngModel)]="searchValue"
       />
       <button
-      nz-button
-      nzSize="small"
-      nzType="primary"
-      (click)="search()"
-      class="search-button"
+        nz-button
+        nzSize="small"
+        nzType="primary"
+        (click)="search()"
+        class="search-button"
       >
-      Search
-    </button>
-    <button nz-button nzSize="small" (click)="reset()">Reset</button>
+        Search
+      </button>
+      <button nz-button nzSize="small" (click)="reset()">Reset</button>
+    </div>
   </div>
-</div>
 </nz-dropdown-menu>
-

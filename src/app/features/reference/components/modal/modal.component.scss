@@ -1,0 +1,14 @@
+:host {
+  background-color: red;
+  z-index: 500;
+  .ant-mdoal {
+    width: 200px;
+    background-color: red;
+  }
+  
+  .ant-modal-content {
+    border-radius: 20px;
+    width: 200px;
+    background-color: red;
+  }
+}

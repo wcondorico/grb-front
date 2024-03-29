@@ -1,15 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { FormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { ReferenceInterface } from '../../core/interfaces/all-reference';
+import { MocServiceService } from '../../core/services/moc-service.service';
+import { CommonModule  } from '@angular/common';
 
-
-interface DataItem {
-  name: string;
-  age: number;
-  address: string;
-}
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -19,43 +16,43 @@ interface DataItem {
     NzTableModule,
     NzDropDownModule,
     FormsModule,
-    NzIconModule 
+    NzIconModule ,
+    CommonModule
   ]
 })
-export class TableComponent {
+export class TableComponent implements OnInit{
+  private readonly apiService: MocServiceService = inject(MocServiceService) 
+  
+  listOfData: ReferenceInterface[] = []
+  listOfDisplayData!: ReferenceInterface[]
+
+  ngOnInit(): void {
+    this.apiService.getJsonData().subscribe(list => {
+      this.listOfData = list
+      this.listOfDisplayData = [...this.listOfData];
+    })
+  }
+  
   searchValue = '';
   visible = false;
-  listOfData: DataItem[] = [
-    {
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    },
-    {
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park'
-    }
-  ];
-  listOfDisplayData = [...this.listOfData];
-
+  
   reset(): void {
     this.searchValue = '';
     this.search();
   }
-
+  
   search(): void {
     this.visible = false;
-    this.listOfDisplayData = this.listOfData.filter((item: DataItem) => item.name.indexOf(this.searchValue) !== -1);
+    this.listOfDisplayData = this.listOfData.filter(
+      (item: ReferenceInterface) => item.title.indexOf(this.searchValue) !== -1
+    )
+  }
+
+  getAuthorName(ref: ReferenceInterface): string[]{
+    return ref.referenceAuthor.map(obj => obj.author.name)
+  }
+
+  getTagName(ref: ReferenceInterface): string[]{
+    return ref.referenceTag.map(obj => obj.tag.name)
   }
 }

@@ -1,11 +1,73 @@
-    <nz-modal
-      [(nzVisible)]="isVisibleMiddle"
-      nzTitle="Vertically centered modal dialog"
-      nzCentered
-      [nzStyle]= styleModal
-      (nzOnCancel)="handleCancelMiddle()"
-      (nzOnOk)="handleOkMiddle()"
-    >
-      
-    </nz-modal>
-  
+<nz-modal
+  [(nzVisible)]="isVisibleMiddle"
+  (nzOnCancel)="handleCancelMiddle()"
+  (nzOnOk)="handleOkMiddle()"
+  nzCentered
+  nzTitle="Agregar nueva referencia"
+  nzWidth="400px"
+  [nzBodyStyle]="styleBodyModal"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOkMiddle()">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired nzFor="title"
+          >Título</nz-form-label
+        >
+        <nz-form-control [nzSpan]="8" nzErrorTip="Ingresa el título">
+          <input
+            type="text"
+            nz-input
+            formControlName="title"
+            placeholder="Ingresa el título"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired nzFor="age">Año</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="Ingresa el año">
+          <input
+            type="text"
+            nz-input
+            formControlName="age"
+            placeholder="Ingresa el año"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired nzFor="author"
+          >Autor</nz-form-label
+        >
+        <nz-form-control [nzSpan]="8" nzErrorTip="Ingresa el Author/es">
+          <input
+            type="text"
+            nz-input
+            formControlName="author"
+            placeholder="Ingresa el Author/es"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-upload
+          nzType="drag"
+          [nzMultiple]="true"
+          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          (nzChange)="handleChange($event)"
+        >
+          <p class="ant-upload-drag-icon">
+            <span nz-icon nzType="inbox"></span>
+          </p>
+          <p class="ant-upload-text">
+            Arrasstra aquí tus archivos
+          </p>
+          <p class="ant-upload-hint">
+            Support for a single or bulk upload. Strictly prohibit from
+          </p>
+        </nz-upload>
+      </nz-form-item>
+
+    </form>
+  </ng-container>
+</nz-modal>
