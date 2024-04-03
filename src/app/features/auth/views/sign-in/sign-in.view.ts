@@ -1,11 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { NgIf } from "@angular/common";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+
 import { NzButtonComponent } from "ng-zorro-antd/button";
 import { NzInputDirective, NzInputGroupComponent } from "ng-zorro-antd/input";
 import { NzIconDirective } from "ng-zorro-antd/icon";
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { SignInFacade } from "../../application/facade/sign-in.facade";
 import { NzFormControlComponent, NzFormItemComponent } from "ng-zorro-antd/form";
-import { NgIf } from "@angular/common";
+
+import { SignInFacade } from "../../application/facade/sign-in.facade";
 
 @Component({
   selector: 'app-sign-in',

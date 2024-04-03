@@ -4,8 +4,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { FormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ReferenceInterface } from '../../core/interfaces/all-reference';
-import { MocServiceService } from '../../core/services/moc-service.service';
 import { CommonModule  } from '@angular/common';
+import { ReferenceFacade } from '../../aplication/facade/reference.facade';
 
 @Component({
   selector: 'app-table',
@@ -21,13 +21,13 @@ import { CommonModule  } from '@angular/common';
   ]
 })
 export class TableComponent implements OnInit{
-  private readonly apiService: MocServiceService = inject(MocServiceService) 
+  private readonly apiService: ReferenceFacade = inject(ReferenceFacade) 
   
   listOfData: ReferenceInterface[] = []
   listOfDisplayData!: ReferenceInterface[]
 
   ngOnInit(): void {
-    this.apiService.getJsonData().subscribe(list => {
+    this.apiService.getAllReference().subscribe(list => {
       this.listOfData = list
       this.listOfDisplayData = [...this.listOfData];
     })

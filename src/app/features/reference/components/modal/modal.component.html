@@ -5,67 +5,65 @@
   nzCentered
   nzTitle="Agregar nueva referencia"
   nzWidth="400px"
-  [nzBodyStyle]="styleBodyModal"
 >
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOkMiddle()">
       <nz-form-item>
-        <nz-form-label [nzSpan]="4" nzRequired nzFor="title"
-          >Título</nz-form-label
-        >
-        <nz-form-control [nzSpan]="8" nzErrorTip="Ingresa el título">
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="title">
+          Título
+        </nz-form-label>
+        <nz-form-control nzErrorTip="Ingresa el título" style="margin-bottom: 10px;">
           <input
             type="text"
             nz-input
             formControlName="title"
             placeholder="Ingresa el título"
+            style="width: 230px; margin-left: 5px;"
           />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="4" nzRequired nzFor="age">Año</nz-form-label>
-        <nz-form-control [nzSpan]="8" nzErrorTip="Ingresa el año">
-          <input
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="age">Año</nz-form-label>
+        <nz-form-control nzErrorTip="Ingresa el año" style="margin-bottom: 10px;">
+           <input
             type="text"
             nz-input
             formControlName="age"
             placeholder="Ingresa el año"
+            style="width: 230px; margin-left: 5px;"
           />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="4" nzRequired nzFor="author"
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="author"
           >Autor</nz-form-label
         >
-        <nz-form-control [nzSpan]="8" nzErrorTip="Ingresa el Author/es">
+        <nz-form-control nzErrorTip="Ingresa el Author/ es" style="margin-bottom: 10px;">
           <input
             type="text"
             nz-input
             formControlName="author"
             placeholder="Ingresa el Author/es"
+            style="width: 230px; margin-left: 5px;"
           />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-upload
-          nzType="drag"
-          [nzMultiple]="true"
-          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          (nzChange)="handleChange($event)"
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="author" 
+          >Referencia</nz-form-label
         >
-          <p class="ant-upload-drag-icon">
-            <span nz-icon nzType="inbox"></span>
-          </p>
-          <p class="ant-upload-text">
-            Arrasstra aquí tus archivos
-          </p>
-          <p class="ant-upload-hint">
-            Support for a single or bulk upload. Strictly prohibit from
-          </p>
-        </nz-upload>
+        <nz-form-control nzErrorTip="Ingresa la referen cia" style="margin-bottom: 10px;">
+          <input
+            type="text"
+            nz-input
+            formControlName="reference"
+            placeholder="Ingresa la referencia"
+            style="width: 230px; margin-left: 5px;"
+          />
+        </nz-form-control>
       </nz-form-item>
 
     </form>
