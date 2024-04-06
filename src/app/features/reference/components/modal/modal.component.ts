@@ -8,7 +8,6 @@ import {
 } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalModule, StyleObjectLike } from 'ng-zorro-antd/modal';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 
@@ -29,7 +28,6 @@ export class ModalComponent {
   @Input() isVisibleMiddle = false;
   @Output() isVisibleMiddleChange = new EventEmitter<boolean>();
   private readonly fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
-  private readonly msg: NzMessageService = inject(NzMessageService);
 
   styleBodyModal: StyleObjectLike = {
     backgroundColor: 'white',

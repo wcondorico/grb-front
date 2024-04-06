@@ -10,9 +10,14 @@ export class AllReferenceHttp extends AllReferenceRepository {
   apiUrl: string = 'http://localhost:3000'
 
 
-  getAllReference(): Observable<any> {
+  getAllReference(): Observable<ReferenceInterface[]> {
     const url = `${this.apiUrl}/references`
     return this.http.get<ReferenceInterface[]>(url);
   }
-  
+  /**
+   newReference(): Observable<any>{
+     const url = `${this.apiUrl}/references`
+     return this.http.post(url,);
+    }
+  */
 }
