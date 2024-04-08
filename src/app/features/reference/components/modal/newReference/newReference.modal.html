@@ -37,10 +37,25 @@
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired nzFor="author"
+        <nz-form-label [nzSpan]="7" nzFor="author"
           >Autor</nz-form-label
         >
-        <nz-form-control nzErrorTip="Ingresa el Author/ es" style="margin-bottom: 10px;">
+        <nz-form-control style="margin-bottom: 10px;">
+          <input
+            type="text"
+            nz-input
+            formControlName="author"
+            placeholder="Ingresa el Author/es"
+            style="width: 230px; margin-left: 5px;"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzFor="author"
+          >Etiqueta</nz-form-label
+        >
+        <nz-form-control style="margin-bottom: 10px;">
           <input
             type="text"
             nz-input
@@ -53,14 +68,14 @@
 
       <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired nzFor="author" 
-          >Referencia</nz-form-label
+          >Enlace</nz-form-label
         >
-        <nz-form-control nzErrorTip="Ingresa la referen cia" style="margin-bottom: 10px;">
+        <nz-form-control nzErrorTip="Ingresa el enlace" style="margin-bottom: 10px;">
           <input
             type="text"
             nz-input
             formControlName="reference"
-            placeholder="Ingresa la referencia"
+            placeholder="Ingresa el enlace"
             style="width: 230px; margin-left: 5px;"
           />
         </nz-form-control>

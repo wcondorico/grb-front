@@ -1,4 +1,4 @@
-import { ReferenceAuthor } from "./ReferenceAuthro";
+import { ReferenceAuthor } from "./ReferenceAuthor";
 import { ReferenceTag } from "./ReferenceTag";
 
 export interface ReferenceInterface {

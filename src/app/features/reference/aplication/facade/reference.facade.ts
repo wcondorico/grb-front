@@ -9,5 +9,9 @@ export class ReferenceFacade {
   getAllReference(){
     return this.getReference.getAllReference();
   }
+
+  getAllTags(){
+    return this.getAllReference
+  }
   
 }

@@ -13,9 +13,9 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 @Component({
   standalone: true,
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss',
+  selector: 'newReference-modal',
+  templateUrl: './newReference.modal.html',
+  styleUrl: './newReference.modal.scss',
   imports: [
     NzModalModule,
     NzFormModule,
