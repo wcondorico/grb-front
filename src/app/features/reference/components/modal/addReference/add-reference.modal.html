@@ -1,13 +1,13 @@
 <nz-modal
   [(nzVisible)]="isVisibleMiddle"
-  (nzOnCancel)="handleCancelMiddle()"
-  (nzOnOk)="handleOkMiddle()"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
   nzCentered
   nzTitle="Agregar nueva referencia"
   nzWidth="400px"
 >
   <ng-container *nzModalContent>
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOkMiddle()">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOk()">
       <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired nzFor="title">
           Título
@@ -23,13 +23,13 @@
         </nz-form-control>
       </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired nzFor="age">Año</nz-form-label>
+      <!-- <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzFor="dateOfPublication">Año</nz-form-label>
         <nz-form-control nzErrorTip="Ingresa el año" style="margin-bottom: 10px;">
            <input
             type="text"
             nz-input
-            formControlName="age"
+            formControlName="dateOfPublication"
             placeholder="Ingresa el año"
             style="width: 230px; margin-left: 5px;"
           />
@@ -37,44 +37,48 @@
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="author"
-          >Autor</nz-form-label
-        >
+        <nz-form-label [nzSpan]="7" nzFor="referenceAuthor">Autor</nz-form-label>
         <nz-form-control style="margin-bottom: 10px;">
-          <input
-            type="text"
-            nz-input
-            formControlName="author"
-            placeholder="Ingresa el Author/es"
+          <nz-select
+            id="referenceAuthor"
+            formControlName="referenceAuthor"
+            nzPlaceHolder="Selecciona un Autor"
+            (ngModelChange)="addAuthor($event)"
             style="width: 230px; margin-left: 5px;"
-          />
+          >
+          @for (author of listOfAuthors; track $index) {
+            <nz-option nzValue="{{author.name}}" nzLabel="{{author.name}}"></nz-option>
+          }
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="author"
-          >Etiqueta</nz-form-label
-        >
+        <nz-form-label [nzSpan]="7" nzFor="referenceTag">Etiqueta</nz-form-label>
         <nz-form-control style="margin-bottom: 10px;">
-          <input
-            type="text"
-            nz-input
-            formControlName="author"
-            placeholder="Ingresa el Author/es"
+          <nz-select
+            id="referenceTag"
+            formControlName="referenceTag"
+            nzPlaceHolder="Selecciona una Etiqueta"
+            (ngModelChange)="addTag($event)"
             style="width: 230px; margin-left: 5px;"
-          />
+          >
+          @for (tag of listOfTags; track $index) {
+            <nz-option nzValue="{{tag.name}}" nzLabel="{{tag.name}}"></nz-option>
+          }
+          </nz-select>
         </nz-form-control>
-      </nz-form-item>
+      </nz-form-item> -->
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired nzFor="author" 
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="publicationPlace" 
           >Enlace</nz-form-label
         >
         <nz-form-control nzErrorTip="Ingresa el enlace" style="margin-bottom: 10px;">
           <input
             type="text"
             nz-input
-            formControlName="reference"
+            formControlName="publicationPlace"
             placeholder="Ingresa el enlace"
             style="width: 230px; margin-left: 5px;"
           />

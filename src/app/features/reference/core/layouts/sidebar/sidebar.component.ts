@@ -7,7 +7,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { ModalComponent } from '../../../components/modal/newReference/newReference.modal';
+import { ModalComponent } from '../../../components/modal/addReference/add-reference.modal';
 
 @Component({
     selector: 'app-sidebar',

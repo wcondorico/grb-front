@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from "./core/layouts/sidebar/sidebar.component";
 import { RouterOutlet } from "@angular/router";
-import { HomeView } from "./views/all-reference/all-reference.view";
-import { AuthorsComponent } from './views/Authors/authors.component';
-import { TagsComponent } from './views/Tags/tags.component';
+import { AllReference } from "./views/all-reference/all-reference.view";
+import { AuthorsComponent } from './views/authors/authors.component';
+import { TagsComponent } from './views/tags/tags.component';
 @Component({
   selector: 'app-reference',
   standalone: true,
   imports: [
     SidebarComponent,
     RouterOutlet,
-    HomeView,
+    AllReference,
     AuthorsComponent,
     TagsComponent
   ],

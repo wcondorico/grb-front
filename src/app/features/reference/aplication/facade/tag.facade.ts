@@ -1,13 +1,12 @@
 import { Injectable, inject } from '@angular/core';
-import { AllTagRepository } from '../../domain/repository/Tag.repository';
+import { AllTagRepository } from '../../domain/repository/tag.repository';
 
 @Injectable()
-export class ReferenceFacade {
+export class TagFacade {
   
   getTag = inject(AllTagRepository)
 
   getAllTags(){
     return this.getTag.getAllTags();
   }
-  
 }

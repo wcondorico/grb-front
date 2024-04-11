@@ -41,7 +41,28 @@
         bottom: 1px;
       }
     }
+  }
+}
 
+.search-box {
+  padding: 8px;
+
+  & input {
+    width: 188px;
+    margin-bottom: 8px;
+    display: block;
   }
 
+  & button {
+    width: 90px;
+  }
+}
+
+.search-button {
+  margin-right: 8px;
+}
+
+[nz-icon]{
+  font-size: 20px;
+  color: #575757;
 }

@@ -1,23 +1,23 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AllReferenceRepository } from '../../domain/repository/Reference.repository';
+import { ReferenceRepository } from '../../domain/repository/reference.repository';
 import { Observable } from 'rxjs';
-import { ReferenceInterface } from '../../core/interfaces/all-reference';
+import { Reference } from '../../core/interfaces/references/reference-response';
+import { ReferenceBody } from '../../core/interfaces/references/reference-body';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
-export class AllReferenceHttp extends AllReferenceRepository {
-  private readonly http: HttpClient = inject(HttpClient)
-  apiUrl: string = 'http://localhost:3000'
+export class AllReferenceHttp extends ReferenceRepository {
+  private readonly http: HttpClient = inject(HttpClient);
+  
 
-
-  getAllReference(): Observable<ReferenceInterface[]> {
-    const url = `${this.apiUrl}/references`
-    return this.http.get<ReferenceInterface[]>(url);
+  getAllReference(): Observable<Reference[]> {
+    const url = `${environment.api}/references`;
+    return this.http.get<Reference[]>(url);
   }
-  /**
-   newReference(): Observable<any>{
-     const url = `${this.apiUrl}/references`
-     return this.http.post(url,);
-    }
-  */
+
+  addReference(value: ReferenceBody): Observable<ReferenceBody> {
+    const url = `${environment.api}/references`;
+    return this.http.post<ReferenceBody>(url, value);
+  }
 }

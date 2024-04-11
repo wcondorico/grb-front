@@ -13,15 +13,15 @@ export const referenceRoutes: Routes = [
       },
       {
         path: 'all-references',
-        loadComponent: ()=> import('./views/all-reference/all-reference.view').then(c => c.HomeView)
+        loadComponent: ()=> import('./views/all-reference/all-reference.view').then(c => c.AllReference)
       },
       {
         path: 'tags',
-        loadComponent: () => import('./views/Tags/tags.component').then(c => c.TagsComponent)
+        loadComponent: () => import('./views/tags/tags.component').then(c => c.TagsComponent)
       },
       {
         path: 'authors',
-        loadComponent: () => import('./views/Authors/authors.component').then(c => c.AuthorsComponent)
+        loadComponent: () => import('./views/authors/authors.component').then(c => c.AuthorsComponent)
       }
     ]
   },

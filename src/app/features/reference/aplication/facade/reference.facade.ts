@@ -1,17 +1,17 @@
 import { Injectable, inject } from '@angular/core';
-import { AllReferenceRepository } from '../../domain/repository/Reference.repository';
+import { ReferenceBody } from '../../core/interfaces/references/reference-body';
+import { ReferenceRepository } from "../../domain/repository/reference.repository";
 
 @Injectable()
 export class ReferenceFacade {
   
-  getReference = inject(AllReferenceRepository)
+  getReference = inject(ReferenceRepository)
 
   getAllReference(){
     return this.getReference.getAllReference();
-  }
+  }  
 
-  getAllTags(){
-    return this.getAllReference
+  addReference(value: ReferenceBody){
+    return this.getReference.addReference(value)
   }
-  
 }

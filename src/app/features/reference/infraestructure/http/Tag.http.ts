@@ -1,18 +1,18 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { AllTagRepository } from '../../domain/repository/Tag.repository';
-import { ReferenceTag } from '../../core/interfaces/ReferenceTag';
+import { Tags } from '../../core/interfaces/tags/tags';
+import { AllTagRepository } from '../../domain/repository/tag.repository';
 
 @Injectable()
 export class AllTagHttp extends AllTagRepository {
   private readonly http: HttpClient = inject(HttpClient)
   apiUrl: string = 'http://localhost:3000'
 
-  getAllTags(): Observable<ReferenceTag[]> {
-    const url = `${this.apiUrl}/tag`
-    return this.http.get<ReferenceTag[]>(url);
+  getAllTags(): Observable<Tags[]> {
+    const url = `${this.apiUrl}/tags`
+    return this.http.get<Tags[]>(url);
   }
   /**
    newReference(): Observable<any>{

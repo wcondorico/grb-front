@@ -1,6 +1,6 @@
-export interface Author {
+export interface Name{
   id: number;
   name: string;
   createAt: string;
-  color?: string;
+  color: string;
 }

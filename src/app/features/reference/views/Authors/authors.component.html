@@ -5,11 +5,12 @@
     </div>
     <div class="main-container__table">
 
-      <nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+      <nz-table #nzTable [nzData]="listOfDisplayAuthors" nzTableLayout="fixed">
         <thead>
           <tr>
+            <th>Id</th>
             <th nzCustomFilter>
-              Título
+              Nombre
               <nz-filter-trigger
                 [(nzVisible)]="visible"
                 [nzActive]="searchValue.length > 0"
@@ -18,20 +19,14 @@
                 <span nz-icon nzType="search"></span>
               </nz-filter-trigger>
             </th>
-            <th>Año</th>
-            <th>Autor</th>
-            <th>Etiqueta</th>
             <th>Agregado</th>
-            <th>Archivo</th>
           </tr>
         </thead>
         <tbody>
           @for (data of nzTable.data; track data) {
           <tr>
-            <td>{{ data.title }}</td>
-            <td>{{ data.dateOfPublication }}</td>
-            <td>{{ getAuthorName(data).join(', ') }}</td>
-            <td>{{ getTagName(data).join(', ') }}</td>
+            <td>{{ data.id }}</td>
+            <td>{{ data.name }}</td>
             <td>{{ data.createAt | date:'medium' }}</td>
           </tr>
           }

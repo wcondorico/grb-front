@@ -1,7 +1,7 @@
-import { Author } from "./Author";
+import { Name } from "./name-response";
 
 export interface ReferenceTag {
   id: number;
   createAt: string;
-  tag: Author;
+  tag: Name;
 }

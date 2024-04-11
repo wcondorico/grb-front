@@ -1,14 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
-import { ReferenceFacade } from '../../aplication/facade/reference.facade';
-import { ReferenceInterface } from '../../core/interfaces/all-reference';
+import { TagFacade } from '../../aplication/facade/tag.facade';
+import { Tags } from '../../core/interfaces/tags/tags';
 
 @Component({
     selector: 'app-tags',
@@ -26,13 +26,13 @@ import { ReferenceInterface } from '../../core/interfaces/all-reference';
 })
 export class TagsComponent implements OnInit{
 
-    private readonly apiService: ReferenceFacade = inject(ReferenceFacade) 
+    private readonly tagServ: TagFacade = inject(TagFacade) 
   
-    listOfData: ReferenceInterface[] = []
-    listOfDisplayData!: ReferenceInterface[]
+    listOfData: Tags[] = []
+    listOfDisplayData!: Tags[]
   
     ngOnInit(): void {
-      this.apiService.getAllReference().subscribe(list => {
+      this.tagServ.getAllTags().subscribe(list => {
         this.listOfData = list
         this.listOfDisplayData = [...this.listOfData];
       })
@@ -49,15 +49,7 @@ export class TagsComponent implements OnInit{
     search(): void {
       this.visible = false;
       this.listOfDisplayData = this.listOfData.filter(
-        (item: ReferenceInterface) => item.title.indexOf(this.searchValue) !== -1
+        (item: Tags) => item.name.indexOf(this.searchValue) !== -1
       )
-    }
-  
-    getAuthorName(ref: ReferenceInterface): string[]{
-      return ref.referenceAuthor.map(obj => obj.author.name)
-    }
-  
-    getTagName(ref: ReferenceInterface): string[]{
-      return ref.referenceTag.map(obj => obj.tag.name)
     }
 }
