@@ -4,13 +4,21 @@
       <p>Todas las Referencias</p>
     </div>
     <div class="main-container__table">
-      <nz-table #nzTable [nzData]="listOfDisplayReferences" nzTableLayout="fixed">
+      <nz-table
+        #nzTable
+        [nzData]="referenceListDisplay"
+        nzTableLayout="fixed"
+        [nzShowPagination]="true"
+        [nzPaginationPosition]="'top'"
+        [nzSize]="'small'"
+        [nzPageSize]="8"
+      >
         <thead>
           <tr>
             <th nzCustomFilter>
               Título
               <nz-filter-trigger
-                [(nzVisible)]="visible"
+                [(nzVisible)]="isVisibleSearch"
                 [nzActive]="searchValue.length > 0"
                 [nzDropdownMenu]="menu"
               >
@@ -26,10 +34,10 @@
           </tr>
         </thead>
         <tbody>
-          @for (data of obs$ | async; track data) {
+          @for (data of nzTable.data ; track data ) {
           <tr>
             <td>{{ data.title }}</td>
-            <td>{{ data.dateOfPublication }}</td>
+            <td>{{ data.dateOfPublication | date: 'yyyy' }}</td>
             <td>{{ getAuthorName(data).join(', ') }}</td>
             <td>{{ getTagName(data).join(', ') }}</td>
             <td>{{ data.createAt | date:'medium' }}</td>
@@ -39,8 +47,19 @@
               </a>
             </td>
             <td>
-              <span (click)="newClick" style="cursor: pointer">
-                <img src="{{logoEdit}}" alt="editar" style="width: 23px" />
+              <span
+                (click)="updateReference(data)"
+                style="cursor: pointer; font-size: 32px"
+                nz-icon
+                nzType="ng-zorro:edit"
+              >
+              </span>
+              <span
+                (click)="deleteReference(data.id!)"
+                style="cursor: pointer; margin-left: 30px; font-size: 30px"
+                nz-icon
+                nzType="ng-zorro:delete"
+              >
               </span>
             </td>
           </tr>
@@ -65,18 +84,17 @@
             >
               Search
             </button>
-            <button 
-              nz-button 
-              nzSize="small" 
-              (click)="reset()"
-            >
-            Reset
-            </button>
+            <button nz-button nzSize="small" (click)="reset()">Reset</button>
           </div>
         </div>
       </nz-dropdown-menu>
     </div>
-
+    @if(isVisibleModalReference){
+      <edit-reference-modal 
+      [(isVisibleMiddle)]="isVisibleModalReference"
+      [editableReference]="editableReference"
+      ></edit-reference-modal>          
+    }
     <div class="main-container__footer">
       <nz-footer>RGB ©2024 Implement By Aija Labs</nz-footer>
     </div>

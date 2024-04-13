@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { ReferenceBody } from '../../core/interfaces/references/reference-body';
+import { ReferenceCreateBody } from '../../core/interfaces/references/reference-create-body';
 import { ReferenceRepository } from "../../domain/repository/reference.repository";
+import { ReferenceUpdateBody } from '../../core/interfaces/references/reference-update-body';
 
 @Injectable()
 export class ReferenceFacade {
@@ -11,7 +12,15 @@ export class ReferenceFacade {
     return this.getReference.getAllReference();
   }  
 
-  addReference(value: ReferenceBody){
-    return this.getReference.addReference(value)
+  addReference(body: ReferenceCreateBody){
+    return this.getReference.addReference(body)
+  }
+
+  deleteReference(id: number){
+    return this.getReference.deleteReference(id)
+  }
+
+  updateReference(id:number, body:ReferenceUpdateBody){
+    return this.getReference.updateReference(id, body)
   }
 }

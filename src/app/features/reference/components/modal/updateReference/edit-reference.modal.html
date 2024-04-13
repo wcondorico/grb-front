@@ -44,39 +44,39 @@
         </nz-form-control>
       </nz-form-item>
       
-      <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="referenceAuthors">Autor</nz-form-label>
+      <!-- <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzFor="referenceAuthor">Autor</nz-form-label>
         <nz-form-control style="margin-bottom: 10px;">
           <nz-select
             id="referenceAuthor"
-            formControlName="referenceAuthors"
+            formControlName="referenceAuthor"
             nzPlaceHolder="Selecciona un Autor"
-            (ngModelChange)="selectAuthor($event)"
+            (ngModelChange)="addAuthor($event)"
             style="width: 230px; margin-left: 5px;"
           >
           @for (author of listOfAuthors; track $index) {
-            <nz-option nzValue="{{author.id}}" nzLabel="{{author.name}}"></nz-option>
+            <nz-option nzValue="{{author.name}}" nzLabel="{{author.name}}"></nz-option>
           }
           </nz-select>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="referenceTags">Etiqueta</nz-form-label>
+        <nz-form-label [nzSpan]="7" nzFor="referenceTag">Etiqueta</nz-form-label>
         <nz-form-control style="margin-bottom: 10px;">
           <nz-select
             id="referenceTag"
-            formControlName="referenceTags"
+            formControlName="referenceTag"
             nzPlaceHolder="Selecciona una Etiqueta"
-            (ngModelChange)="selectTag($event)"
+            (ngModelChange)="addTag($event)"
             style="width: 230px; margin-left: 5px;"
           >
           @for (tag of listOfTags; track $index) {
-            <nz-option nzValue="{{tag.id}}" nzLabel="{{tag.name}}"></nz-option>
+            <nz-option nzValue="{{tag.name}}" nzLabel="{{tag.name}}"></nz-option>
           }
           </nz-select>
         </nz-form-control>
-      </nz-form-item>
+      </nz-form-item> -->
 
       <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired nzFor="publicationPlace"

@@ -1,15 +1,30 @@
-import { ReferenceAuthor } from "./reference-author-response";
-import { ReferenceTag } from "./reference-tag-response";
-
-export interface Reference {
+export interface ReferenceResponse {
   id?: number;
   title: string;
-  dateOfPublication: string | null;
-  editorial?: string | null;
-  publicationPlace: string | null;
-  note?: string | null;
-  createAt?: string | null;
-  referenceAuthor: ReferenceAuthor[];
-  referenceTag: ReferenceTag[];
+  dateOfPublication: string ;
+  editorial?: string;
+  publicationPlace: string ;
+  note?: string;
+  createAt?: string;
+  referenceAuthor?: ReferenceAuthorResponse[];
+  referenceTag?: ReferenceTagResponse[];
 }
 
+interface ReferenceAuthorResponse {
+  id: number;
+  createAt: string;
+  author: Name;
+}
+
+interface ReferenceTagResponse {
+  id: number;
+  createAt: string;
+  tag: Name;
+}
+
+interface Name{
+  id: number;
+  name: string;
+  createAt: string;
+  color?: string;
+}

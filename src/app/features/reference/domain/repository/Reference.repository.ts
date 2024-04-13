@@ -1,8 +1,11 @@
 import { Observable } from "rxjs";
-import { Reference } from "../../core/interfaces/references/reference-response";
-import { ReferenceBody } from "../../core/interfaces/references/reference-body";
+import { ReferenceResponse } from "../../core/interfaces/references/reference-response";
+import { ReferenceCreateBody } from "../../core/interfaces/references/reference-create-body";
+import { ReferenceUpdateBody } from "../../core/interfaces/references/reference-update-body";
 
 export abstract class ReferenceRepository {
-  abstract getAllReference(): Observable<Reference[]>;
-  abstract addReference(value: ReferenceBody): Observable<ReferenceBody>;
+  abstract getAllReference(): Observable<ReferenceResponse[]>;
+  abstract addReference(body: ReferenceCreateBody): Observable<ReferenceCreateBody>;
+  abstract deleteReference(id: number): Observable<ReferenceResponse>;
+  abstract updateReference(id:number, body: ReferenceUpdateBody): Observable<ReferenceResponse>
 }

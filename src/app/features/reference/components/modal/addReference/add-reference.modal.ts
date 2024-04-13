@@ -3,23 +3,26 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
 
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 
+import { NzI18nService, en_US } from 'ng-zorro-antd/i18n';
 import { AuthorFacade } from '../../../aplication/facade/author.facade';
 import { ReferenceFacade } from '../../../aplication/facade/reference.facade';
 import { TagFacade } from '../../../aplication/facade/tag.facade';
 import { Authors } from '../../../core/interfaces/authors/authors';
-import { ReferenceBody } from '../../../core/interfaces/references/reference-body';
+import { ReferenceAuthorBody, ReferenceCreateBody, ReferenceTagBody } from '../../../core/interfaces/references/reference-create-body';
 import { Tags } from '../../../core/interfaces/tags/tags';
-import { UpdateRefs } from './update-references.service';
+import { UpdateTableReference } from './add-references.service';
 
 @Component({
   standalone: true,
@@ -32,52 +35,68 @@ import { UpdateRefs } from './update-references.service';
     ReactiveFormsModule,
     NzUploadModule,
     NzIconModule,
-    NzSelectModule
+    NzSelectModule,
+    NzDatePickerModule,
+    FormsModule
   ],
 })
-export class ModalComponent implements OnInit{
+export class AddReferenceModalComponent implements OnInit{
   
   @Input() isVisibleMiddle = false;
   @Output() isVisibleMiddleChange = new EventEmitter<boolean>();
-  private readonly fb: FormBuilder = inject(FormBuilder);
-  private readonly tagServ: TagFacade = inject(TagFacade)
-  private readonly authorServ: AuthorFacade = inject(AuthorFacade)
-  private readonly RefServ: ReferenceFacade = inject(ReferenceFacade)
-  private readonly updateRefs: UpdateRefs = inject(UpdateRefs)
-  listOfTags!: Tags[]
-  listOfAuthors!: Authors[]
+  private readonly formBuilder: FormBuilder = inject(FormBuilder);
+  private readonly tagService: TagFacade = inject(TagFacade);
+  private readonly authorService: AuthorFacade = inject(AuthorFacade);
+  private readonly referenceService: ReferenceFacade = inject(ReferenceFacade);
+  private readonly updateReferences: UpdateTableReference = inject(UpdateTableReference);
+  private readonly i18n: NzI18nService = inject(NzI18nService);
+  
+  listOfTags!: Tags[];
+  listOfAuthors!: Authors[];
+  authorSelected: ReferenceAuthorBody[]=[];
+  tagSelected: ReferenceTagBody[]=[];
+  addReference: ReferenceCreateBody = {
+    title: '',
+    publicationPlace: '',
+    dateOfPublication: new Date()
+  }
 
   ngOnInit(): void {
-    this.tagServ.getAllTags().subscribe(list => this.listOfTags=list)
-    this.authorServ.getAllAuthors().subscribe(list => this.listOfAuthors=list)
+    this.tagService.getAllTags().subscribe(list => this.listOfTags=list)
+    this.authorService.getAllAuthors().subscribe(list => this.listOfAuthors=list)
+    this.i18n.setLocale(en_US);
   }
 
   validateForm: FormGroup<{
     title: FormControl<string|null>;
-    /* dateOfPublication?: FormControl<Date>; */
+    dateOfPublication: FormControl<Date|null>;
     publicationPlace: FormControl<string|null>;
-    /* referenceAuthor?: FormControl<string>;
-    referenceTag?: FormControl<string>; */
-  }> = this.fb.group({
+    referenceAuthors: FormControl<string|null>;
+    referenceTags: FormControl<string|null>;
+  }> = this.formBuilder.group({
     title: ['', [Validators.required]],
-    /* dateOfPublication: [''], */
+    dateOfPublication: [new Date(), [Validators.required]],
     publicationPlace: ['', [Validators.required]],
-    /* referenceAuthor: [''],
-    referenceTag: [''] */
+    referenceAuthors: [''],
+    referenceTags: [''],
   });
 
   handleOk(): void {
     
-    /* let dateOfPublicationFormat = */
-
     if (this.validateForm.valid) {
-      let addReference: ReferenceBody = {
+      this.addReference = {
         title: this.validateForm.value.title!,
-        /* dateOfPublication: this.validateForm.value.dateOfPublication!, */
+        dateOfPublication: this.validateForm.value.dateOfPublication!,
         publicationPlace: this.validateForm.value.publicationPlace!,
+        referenceAuthors: this.authorSelected,
+        referenceTags: this.tagSelected
       }
-      this.RefServ.addReference(addReference).subscribe(list => console.log(list))
-      this.updateRefs.updateReference.next(false)
+      console.log(this.addReference);
+      this.referenceService.addReference(this.addReference).subscribe({
+          next:response => this.updateReferences.updateTableReference.next(false),
+          error: messageError => console.log(messageError)          
+        })
+      
       this.isVisibleMiddle = false;
       this.isVisibleMiddleChange.emit(this.isVisibleMiddle);
     } else {
@@ -94,11 +113,18 @@ export class ModalComponent implements OnInit{
     this.isVisibleMiddle = false;
     this.isVisibleMiddleChange.emit(this.isVisibleMiddle);
   }
-
-  addAuthor(value: string): void {
+  
+  selectAuthor(id: number): void {
+    this.authorSelected.push({
+      authorId: Number(id)
+    })
+    console.log(this.authorSelected);
   }
 
-  addTag(value: string){
+  selectTag(id: number): void{
+    this.tagSelected.push({
+      tagId: Number(id)
+    })
   }
 
 }
