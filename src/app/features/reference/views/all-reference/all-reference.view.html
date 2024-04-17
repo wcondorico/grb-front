@@ -3,6 +3,20 @@
     <div class="main-container__title">
       <p>Todas las Referencias</p>
     </div>
+    <button nz-button nzType="primary"  nzShape="round" (click)="changeIsVisibleModalAdd()">
+      <span nz-icon nzType="upload"></span>
+      Nueva Referencia
+    </button>
+    @if(isVisibleModalAddReference){
+      <add-reference-modal [(isVisibleModalAddReference)]="isVisibleModalAddReference"></add-reference-modal>          
+    }
+    @if(isVisibleModalUpdateReference){
+      <update-reference-modal 
+      [(isVisibleModalUpdateReference)]="isVisibleModalUpdateReference"
+      [updateReference]="editableReference"
+      (sendUpdateReference)="getReference()"
+      ></update-reference-modal>          
+    }
     <div class="main-container__table">
       <nz-table
         #nzTable
@@ -89,12 +103,6 @@
         </div>
       </nz-dropdown-menu>
     </div>
-    @if(isVisibleModalReference){
-      <edit-reference-modal 
-      [(isVisibleMiddle)]="isVisibleModalReference"
-      [editableReference]="editableReference"
-      ></edit-reference-modal>          
-    }
     <div class="main-container__footer">
       <nz-footer>RGB ©2024 Implement By Aija Labs</nz-footer>
     </div>

@@ -1,0 +1,31 @@
+<nz-modal
+  [(nzVisible)]="isVisibleModalUpdateAuthor"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzCentered
+  nzTitle="Agregar nuevo Autor"
+  nzWidth="400px"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOk()">
+      
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="name"
+          >Autor</nz-form-label
+        >
+        <nz-form-control
+          nzErrorTip="Ingresa el nombre del Autor"
+          style="margin-bottom: 10px"
+        >
+          <input
+            type="text"
+            nz-input
+            formControlName="name"
+            placeholder="Ingresa el nombre del Autor"
+            style="width: 230px; margin-left: 5px"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

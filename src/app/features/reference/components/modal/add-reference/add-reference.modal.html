@@ -1,5 +1,5 @@
 <nz-modal
-  [(nzVisible)]="isVisibleMiddle"
+  [(nzVisible)]="isVisibleModalAddReference"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
   nzCentered
@@ -38,42 +38,49 @@
             nzMode="year"
             formControlName="dateOfPublication"
             nzPlaceHolder="Ingresa el año de publicación"
-            style="width: 230px; margin-left: 5px; cursor: pointer;"
+            style="width: 230px; margin-left: 5px; cursor: pointer"
             [nzInputReadOnly]="true"
           ></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
-      
+
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="referenceAuthors">Autor</nz-form-label>
-        <nz-form-control style="margin-bottom: 10px;">
+        <nz-form-label [nzSpan]="7" nzFor="referenceAuthors"
+          >Autor</nz-form-label
+        >
+        <nz-form-control style="margin-bottom: 10px">
           <nz-select
             id="referenceAuthor"
             formControlName="referenceAuthors"
             nzPlaceHolder="Selecciona un Autor"
             (ngModelChange)="selectAuthor($event)"
-            style="width: 230px; margin-left: 5px;"
+            style="width: 230px; margin-left: 5px"
           >
-          @for (author of listOfAuthors; track $index) {
-            <nz-option nzValue="{{author.id}}" nzLabel="{{author.name}}"></nz-option>
-          }
+            @for (author of listOfAuthors; track $index) {
+            <nz-option
+              nzValue="{{author.id}}"
+              nzLabel="{{author.name}}"
+            ></nz-option>
+            }
           </nz-select>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="referenceTags">Etiqueta</nz-form-label>
-        <nz-form-control style="margin-bottom: 10px;">
+        <nz-form-label [nzSpan]="7" nzFor="referenceTags"
+          >Etiqueta</nz-form-label
+        >
+        <nz-form-control style="margin-bottom: 10px">
           <nz-select
             id="referenceTag"
             formControlName="referenceTags"
             nzPlaceHolder="Selecciona una Etiqueta"
             (ngModelChange)="selectTag($event)"
-            style="width: 230px; margin-left: 5px;"
+            style="width: 230px; margin-left: 5px"
           >
-          @for (tag of listOfTags; track $index) {
+            @for (tag of listOfTags; track $index) {
             <nz-option nzValue="{{tag.id}}" nzLabel="{{tag.name}}"></nz-option>
-          }
+            }
           </nz-select>
         </nz-form-control>
       </nz-form-item>
@@ -92,7 +99,7 @@
             formControlName="publicationPlace"
             placeholder="Ingresa el enlace"
             style="width: 230px; margin-left: 5px"
-          />
+          /> 
         </nz-form-control>
       </nz-form-item>
     </form>

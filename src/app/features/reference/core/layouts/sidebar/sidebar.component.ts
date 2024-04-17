@@ -9,7 +9,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { MenuComponent } from "../../../components/menu/menu.component";
-import { AddReferenceModalComponent } from '../../../components/modal/addReference/add-reference.modal';
+import { AddReferenceModalComponent } from '../../../components/modal/add-reference/add-reference.modal';
 
 @Component({
     selector: 'app-sidebar',

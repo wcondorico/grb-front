@@ -3,16 +3,38 @@
     <div class="main-container__title">
       <p>Autores</p>
     </div>
+    <button nz-button nzType="primary"  nzShape="round" (click)="newAuthor()">
+      <span nz-icon nzType="upload"></span>
+      Nuevo Author
+    </button>
+    @if(isVisibleModalAddAuthor){
+      <add-author-modal
+      [(isVisibleModalAddAuthor)]="isVisibleModalAddAuthor"
+      (sendAddAuthor)="getAllAuthors()"
+      ></add-author-modal>          
+    }
+    @if(isVisibleModalUpdateAuthor){
+      <update-author-modal
+      [(isVisibleModalUpdateAuthor)]="isVisibleModalUpdateAuthor"
+      (sendUpdateAuthor)="getAllAuthors()"
+      [updateAuthorData]="updateAuthorData"
+      ></update-author-modal>          
+    }
     <div class="main-container__table">
-
-      <nz-table #nzTable [nzData]="listOfDisplayAuthors" nzTableLayout="fixed">
+      <nz-table
+        #nzTable
+        [nzData]="listOfDisplayAuthors"
+        nzTableLayout="fixed"
+        [nzPaginationPosition]="'top'"
+        [nzSize]="'small'"
+        [nzPageSize]="8"
+      >
         <thead>
           <tr>
-            <th>Id</th>
             <th nzCustomFilter>
               Nombre
               <nz-filter-trigger
-                [(nzVisible)]="visible"
+                [(nzVisible)]="visibleSearch"
                 [nzActive]="searchValue.length > 0"
                 [nzDropdownMenu]="menu"
               >
@@ -20,14 +42,30 @@
               </nz-filter-trigger>
             </th>
             <th>Agregado</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           @for (data of nzTable.data; track data) {
           <tr>
-            <td>{{ data.id }}</td>
             <td>{{ data.name }}</td>
-            <td>{{ data.createAt | date:'medium' }}</td>
+            <td>{{ data.createAt | date : "medium" }}</td>
+            <td>
+              <span
+                (click)="updateAuthor(data)"
+                style="cursor: pointer; font-size: 32px"
+                nz-icon
+                nzType="ng-zorro:edit"
+              >
+              </span>
+              <span
+                (click)="deleteAuthor(data.id!)"
+                style="cursor: pointer; margin-left: 30px; font-size: 30px"
+                nz-icon
+                nzType="ng-zorro:delete"
+              >
+              </span>
+            </td>
           </tr>
           }
         </tbody>
@@ -54,7 +92,6 @@
           </div>
         </div>
       </nz-dropdown-menu>
-
     </div>
 
     <div class="main-container__footer">

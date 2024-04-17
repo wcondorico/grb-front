@@ -23,15 +23,18 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { NzI18nService, en_US } from 'ng-zorro-antd/i18n';
+import { AuthorFacade } from '../../../aplication/facade/author.facade';
 import { ReferenceFacade } from '../../../aplication/facade/reference.facade';
+import { TagFacade } from '../../../aplication/facade/tag.facade';
+import { Authors } from '../../../core/interfaces/authors/authors';
 import { ReferenceUpdateBody } from '../../../core/interfaces/references/reference-update-body';
-import { UpdateTableReference } from '../addReference/add-references.service';
+import { Tag } from '../../../core/interfaces/tags/tags';
 
 @Component({
   standalone: true,
-  selector: 'edit-reference-modal',
-  templateUrl: './edit-reference.modal.html',
-  styleUrl: './edit-reference.modal.scss',
+  selector: 'update-reference-modal',
+  templateUrl: './update-reference.modal.html',
+  styleUrl: './update-reference.modal.scss',
   imports: [
     NzModalModule,
     NzFormModule,
@@ -39,20 +42,23 @@ import { UpdateTableReference } from '../addReference/add-references.service';
     NzUploadModule,
     NzIconModule,
     NzSelectModule,
-    NzDatePickerModule,
     FormsModule,
+    NzDatePickerModule,
   ],
 })
 export class EditReferenceModalComponent implements OnInit {
-  @Input() isVisibleMiddle = false;
-  @Output() isVisibleMiddleChange = new EventEmitter<boolean>();
   private readonly fb: FormBuilder = inject(FormBuilder);
-  private readonly updateRefs: UpdateTableReference =
-    inject(UpdateTableReference);
-  private readonly refServ: ReferenceFacade = inject(ReferenceFacade);
+  private readonly referenceService: ReferenceFacade = inject(ReferenceFacade);
+  private readonly tagService: TagFacade = inject(TagFacade);
+  private readonly authorService: AuthorFacade = inject(AuthorFacade);
   private readonly i18n: NzI18nService = inject(NzI18nService);
 
-  @Input() editableReference!: ReferenceUpdateBody;
+  @Input() isVisibleModalUpdateReference = false;
+  @Input() updateReference!: ReferenceUpdateBody;
+  @Output() isVisibleModalUpdateReferenceChange = new EventEmitter<boolean>();
+  @Output() sendUpdateReference = new EventEmitter<void>();
+  listOfTags!: Tag[];
+  listOfAuthors!: Authors[];
 
   validateForm!: FormGroup<{
     title: FormControl<string | null>;
@@ -64,26 +70,30 @@ export class EditReferenceModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.i18n.setLocale(en_US);
+    this.tagService.getAllTags().subscribe((list) => (this.listOfTags = list));
+    this.authorService
+      .getAllAuthors()
+      .subscribe((list) => (this.listOfAuthors = list));
 
     this.validateForm = this.fb.group({
-      title: [this.editableReference.title, [Validators.required]],
+      title: [this.updateReference.title, [Validators.required]],
       dateOfPublication: [
-        this.editableReference.dateOfPublication,
+        this.updateReference.dateOfPublication,
         [Validators.required],
       ],
       publicationPlace: [
-        this.editableReference.publicationPlace,
+        this.updateReference.publicationPlace,
         [Validators.required],
       ],
       referenceAuthor: [''],
-      referenceTag: ['']
+      referenceTag: [''],
     });
   }
 
   handleOk(): void {
     if (this.validateForm.valid) {
-      this.editableReference = {
-        id: this.editableReference.id,
+      let updateReferenceData: ReferenceUpdateBody = {
+        id: this.updateReference.id,
         title: this.validateForm.value.title!,
         dateOfPublication: this.validateForm.value.dateOfPublication!,
         publicationPlace: this.validateForm.value.publicationPlace!,
@@ -92,15 +102,20 @@ export class EditReferenceModalComponent implements OnInit {
         deleteReferenceAuthors: [],
         createReferenceTags: [],
         updateReferenceTags: [],
-        deleteReferenceTags: []
-      }
-      console.log(this.editableReference.id,this.editableReference);
-      this.refServ.updateReference(this.editableReference.id!,this.editableReference).subscribe({
-        next: (response) => this.updateRefs.updateTableReference.next(false),
-        error: (messageError) => console.log(messageError),
-      });
-      this.isVisibleMiddle = false;
-      this.isVisibleMiddleChange.emit(this.isVisibleMiddle);
+        deleteReferenceTags: [],
+      };
+      this.referenceService
+        .updateReference(this.updateReference.id!, updateReferenceData)
+        .subscribe({
+          next: (response) => {
+            this.sendUpdateReference.emit();
+            this.isVisibleModalUpdateReference = false;
+            this.isVisibleModalUpdateReferenceChange.emit(
+            this.isVisibleModalUpdateReference
+            );
+          },
+          error: (messageError) => console.log(messageError),
+        });
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -112,11 +127,13 @@ export class EditReferenceModalComponent implements OnInit {
   }
 
   handleCancel(): void {
-    this.isVisibleMiddle = false;
-    this.isVisibleMiddleChange.emit(this.isVisibleMiddle);
+    this.isVisibleModalUpdateReference = false;
+    this.isVisibleModalUpdateReferenceChange.emit(
+      this.isVisibleModalUpdateReference
+    );
   }
 
-  addAuthor(value: string): void {}
+  addAuthor(value: number): void {}
 
-  addTag(value: string) {}
+  addTag(value: number) {}
 }

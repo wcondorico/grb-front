@@ -3,15 +3,38 @@
     <div class="main-container__title">
       <p>Etiquetas</p>
     </div>
+    <button nz-button nzType="primary"  nzShape="round" (click)="changeIsVisibleTagModalAdd()">
+      <span nz-icon nzType="upload"></span>
+      Nueva Etiqueta
+    </button>
+    @if(isVisibleModalAddTag){
+      <add-tag-modal 
+      [(isVisibleModalAddTag)]="isVisibleModalAddTag"
+      (sendAddTag)="getAllTags()"
+      ></add-tag-modal>          
+    }
+    @if(isVisibleModalUpdateTag){
+      <update-tag-modal 
+      [(isVisibleModalUpdateTag)]="isVisibleModalUpdateTag"
+      [updateTagData]="updateTagData"
+      (sendUpdateTag)="getAllTags()"
+      ></update-tag-modal>          
+    }
     <div class="main-container__table">
-
-      <nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+      <nz-table
+        #nzTable
+        [nzPaginationPosition]="'top'"
+        [nzData]="listOfDisplayData"
+        nzTableLayout="fixed"
+        [nzSize]="'small'"
+        [nzPageSize]="8"
+      >
         <thead>
           <tr>
             <th nzCustomFilter>
               Tag
               <nz-filter-trigger
-                [(nzVisible)]="visible"
+                [(nzVisible)]="visibleSearch"
                 [nzActive]="searchValue.length > 0"
                 [nzDropdownMenu]="menu"
               >
@@ -20,6 +43,7 @@
             </th>
             <th>Color</th>
             <th>Agregado</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +51,23 @@
           <tr>
             <td>{{ data.name }}</td>
             <td>{{ data.color }}</td>
-            <td>{{ data.createAt | date:'medium' }}</td>
+            <td>{{ data.createAt | date : "medium" }}</td>
+            <td>
+              <span
+                (click)="updateTag(data)"
+                style="cursor: pointer; font-size: 32px"
+                nz-icon
+                nzType="ng-zorro:edit"
+              >
+              </span>
+              <span
+                (click)="deleteTag(data.id!)"
+                style="cursor: pointer; margin-left: 30px; font-size: 30px"
+                nz-icon
+                nzType="ng-zorro:delete"
+              >
+              </span>
+            </td>
           </tr>
           }
         </tbody>
@@ -54,7 +94,6 @@
           </div>
         </div>
       </nz-dropdown-menu>
-
     </div>
 
     <div class="main-container__footer">

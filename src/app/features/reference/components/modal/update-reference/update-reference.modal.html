@@ -1,5 +1,5 @@
 <nz-modal
-  [(nzVisible)]="isVisibleMiddle"
+  [(nzVisible)]="isVisibleModalUpdateReference"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
   nzCentered
@@ -44,7 +44,7 @@
         </nz-form-control>
       </nz-form-item>
       
-      <!-- <nz-form-item>
+      <nz-form-item>
         <nz-form-label [nzSpan]="7" nzFor="referenceAuthor">Autor</nz-form-label>
         <nz-form-control style="margin-bottom: 10px;">
           <nz-select
@@ -76,7 +76,7 @@
           }
           </nz-select>
         </nz-form-control>
-      </nz-form-item> -->
+      </nz-form-item>
 
       <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired nzFor="publicationPlace"

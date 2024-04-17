@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { referenceRoutes } from './reference.routes';
-import { AllReferenceHttp } from './infraestructure/http/reference.http';
+import { AuthorFacade } from './aplication/facade/author.facade';
 import { ReferenceFacade } from './aplication/facade/reference.facade';
 import { TagFacade } from './aplication/facade/tag.facade';
-import { AllTagHttp } from './infraestructure/http/tag.http';
-import { AuthorFacade } from './aplication/facade/author.facade';
-import { AllAuthorsHttp } from './infraestructure/http/author.http';
+import { AuthorsHttp } from './infraestructure/http/author.http';
+import { ReferenceHttp } from './infraestructure/http/reference.http';
+import { TagHttp } from './infraestructure/http/tag.http';
+import { referenceRoutes } from './reference.routes';
 
 
 @NgModule({
@@ -15,15 +15,15 @@ import { AllAuthorsHttp } from './infraestructure/http/author.http';
     provideRouter(referenceRoutes),
     {
       provide: ReferenceFacade,
-      useClass: AllReferenceHttp
+      useClass: ReferenceHttp
     },
     {
       provide: TagFacade,
-      useClass: AllTagHttp
+      useClass: TagHttp
     },
     {
       provide: AuthorFacade,
-      useClass: AllAuthorsHttp
+      useClass: AuthorsHttp
     }
   ]
 })

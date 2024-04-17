@@ -30,6 +30,27 @@
         }
       }
 
+      & > button {
+        background-color: #b9c1e3;
+        border: 0;
+        width: 180px;
+        height: 40px;
+        margin-left: 30px;
+        border-radius: 10px;
+        color: white;
+        transition: box-shadow 0.3s ease-out;
+        
+        &:hover {
+          box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+        }
+
+        & > span {
+          color: white;
+        }
+      }
+
+      
+
       &__table {
         padding-inline: 30px;
         padding-right: 50px;
@@ -66,7 +87,7 @@
   margin-right: 8px;
 }
 
-[nz-icon]{
+[nz-icon] {
   font-size: 20px;
   color: #575757;
 }

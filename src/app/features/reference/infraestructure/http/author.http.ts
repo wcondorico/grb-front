@@ -3,15 +3,26 @@ import { AllAuthorRepository } from '../../domain/repository/author.repository';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Authors } from '../../core/interfaces/authors/authors';
+import { environment } from '../../../../../environments/environment';
+import { AuthorsBody } from '../../core/interfaces/authors/authors-update-body';
 
 @Injectable()
-export class AllAuthorsHttp extends AllAuthorRepository{
+export class AuthorsHttp extends AllAuthorRepository{
   private readonly http: HttpClient = inject(HttpClient);
-  apiUrl: string = 'http://localhost:3000';
+  url = `${environment.api}/authors`;
   
   getAllAuthors(): Observable<Authors[]> {
-    const url = `${this.apiUrl}/authors`;
-    return this.http.get<Authors[]>(url);
+    return this.http.get<Authors[]>(this.url);
   }
   
+  addAuthor(body: Authors): Observable<Authors>{
+    return this.http.post<Authors>(this.url, body);
+  }
+
+  deleteAuthor(id: number): Observable<Authors> {
+    return this.http.delete<Authors>(`${this.url}/${id}`);
+  }
+  updateAuthor(id: number, body: AuthorsBody): Observable<Authors> {
+    return this.http.put<Authors>(`${this.url}/${id}`,body);
+  }
 }

@@ -8,19 +8,19 @@ export class ReferenceFacade {
   
   getReference = inject(ReferenceRepository)
 
-  getAllReference(){
+  getAllReference() {
     return this.getReference.getAllReference();
   }  
 
-  addReference(body: ReferenceCreateBody){
+  addReference(body: ReferenceCreateBody) {
     return this.getReference.addReference(body)
   }
 
-  deleteReference(id: number){
+  deleteReference(id: number) {
     return this.getReference.deleteReference(id)
   }
 
-  updateReference(id:number, body:ReferenceUpdateBody){
+  updateReference(id:number, body:ReferenceUpdateBody) {
     return this.getReference.updateReference(id, body)
   }
 }

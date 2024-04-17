@@ -1,0 +1,48 @@
+<nz-modal
+  [(nzVisible)]="isVisibleModalAddTag"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzCentered
+  nzTitle="Agregar nueva Etiqueta"
+  nzWidth="400px"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOk()">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="name">
+          Tag
+        </nz-form-label>
+        <nz-form-control
+          nzErrorTip="Ingresa el tag"
+          style="margin-bottom: 10px"
+        >
+          <input
+            type="text"
+            nz-input
+            formControlName="name"
+            placeholder="Ingresa el tag"
+            style="width: 230px; margin-left: 5px"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="color"
+          >Color</nz-form-label
+        >
+        <nz-form-control
+          nzErrorTip="Ingresa el color con este formato #000000"
+          style="margin-bottom: 10px"
+        >
+          <input
+            type="text"
+            nz-input
+            formControlName="color"
+            placeholder="Ingresa el color"
+            style="width: 230px; margin-left: 5px"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

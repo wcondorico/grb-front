@@ -8,7 +8,7 @@ import { environment } from '../../../../../environments/environment';
 import { ReferenceUpdateBody } from '../../core/interfaces/references/reference-update-body';
 
 @Injectable()
-export class AllReferenceHttp extends ReferenceRepository {
+export class ReferenceHttp extends ReferenceRepository {
   private readonly http: HttpClient = inject(HttpClient);
   url = `${environment.api}/references`;
 

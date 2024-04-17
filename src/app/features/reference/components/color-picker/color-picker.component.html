@@ -1,0 +1,12 @@
+<input
+  [(colorPicker)]="color"
+  [style.background]="color"
+  [cpOKButton]="true"
+  [cpCancelButton]="true"
+  [cpAddColorButton]="true"
+  [cpSaveClickOutside]="true"
+  [cpOKButtonText]="'Save Color'"
+  [cpPresetColorsClass]="color"
+  (colorPickerSelect)="action($event)"
+  class="color-input"
+/>

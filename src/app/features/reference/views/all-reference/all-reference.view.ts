@@ -1,20 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTableModule } from 'ng-zorro-antd/table';
-
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { Observable } from 'rxjs';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+
 import { ReferenceFacade } from '../../aplication/facade/reference.facade';
-import { UpdateTableReference } from '../../components/modal/addReference/add-references.service';
-import { EditReferenceModalComponent } from '../../components/modal/updateReference/edit-reference.modal';
+import { UpdateTableReference } from '../../components/modal/add-reference/add-references.service';
+import { EditReferenceModalComponent } from '../../components/modal/update-reference/update-reference.modal';
 import { ReferenceResponse } from '../../core/interfaces/references/reference-response';
 import { ReferenceUpdateBody } from '../../core/interfaces/references/reference-update-body';
+import { AddReferenceModalComponent } from '../../components/modal/add-reference/add-reference.modal';
 
 @Component({
   selector: 'app-all-reference',
@@ -30,41 +32,43 @@ import { ReferenceUpdateBody } from '../../core/interfaces/references/reference-
     CommonModule,
     NzModalModule,
     EditReferenceModalComponent,
+    NzButtonComponent,
+    AddReferenceModalComponent,
   ],
 })
 export class AllReference implements OnInit {
-  private readonly referenceServ: ReferenceFacade = inject(ReferenceFacade);
-  private readonly updateRefsTable: UpdateTableReference =
+  private readonly referenceService: ReferenceFacade = inject(ReferenceFacade);
+  private readonly serviceUpdateTableReference: UpdateTableReference =
     inject(UpdateTableReference);
   private readonly deleteModal: NzModalService = inject(NzModalService);
 
-  referenceListDisplay!: ReferenceResponse[];
   referenceList!: ReferenceResponse[];
-  obs$!: Observable<ReferenceResponse[]>;
+  referenceListDisplay!: ReferenceResponse[];
   searchValue = '';
   isVisibleSearch = false;
-  isVisibleModalReference = false;
+  isVisibleModalAddReference = false;
+  isVisibleModalUpdateReference = false;
   editableReference!: ReferenceUpdateBody;
 
   ngOnInit() {
-    this.updateRefsTable.updateTableReference.subscribe(() => {
+    this.serviceUpdateTableReference.updateTableReference.subscribe(() => {
       this.getReference();
     });
   }
 
   getReference() {
-    this.obs$ = this.referenceServ.getAllReference();
-    this.obs$.subscribe((list) => {
-      list.sort((a, b) => {
-        const titleA = isNaN(Number(a.title)) ? a.title : Number(a.title);
-        const titleB = isNaN(Number(b.title)) ? b.title : Number(b.title);
-        if (titleA < titleB) return -1;
-        if (titleA > titleB) return 1;
-        return 0;
-      });
+    this.referenceService.getAllReference().subscribe((list) => {
+      list.sort((a,b) => this.compare(a.title,b.title))
       this.referenceList = list;
       this.referenceListDisplay = list;
     });
+  }
+
+  compare(a: string, b: string) {
+    if (isNaN(Number(a)) && isNaN(Number(b))) return a.localeCompare(b);
+    if (!isNaN(Number(a)) && !isNaN(Number(b))) return Number(a) - Number(b);
+    if (isNaN(Number(a))) return -1;
+    return 1;
   }
 
   search(): void {
@@ -102,7 +106,7 @@ export class AllReference implements OnInit {
       updateReferenceTags: [],
       deleteReferenceTags: [],
     };
-    this.isVisibleModalReference = true;
+    this.isVisibleModalUpdateReference = true;
   }
 
   deleteReference(id: number) {
@@ -112,12 +116,19 @@ export class AllReference implements OnInit {
       nzOkType: 'primary',
       nzOkDanger: true,
       nzOnOk: () =>
-        this.referenceServ.deleteReference(id).subscribe((ref) => {
+        this.referenceService.deleteReference(id).subscribe((ref) => {
           this.getReference();
           console.log(ref);
         }),
       nzCancelText: 'No',
       nzOnCancel: () => console.log('Cancel'),
     });
+  }
+
+  changeIsVisibleModalUpdate() {
+    this.isVisibleModalUpdateReference = true;
+  }
+  changeIsVisibleModalAdd() {
+    this.isVisibleModalAddReference = true;
   }
 }
