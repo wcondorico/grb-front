@@ -21,7 +21,7 @@
             nz-input
             formControlName="name"
             placeholder="Ingresa el tag"
-            style="width: 230px; margin-left: 5px"
+            style="width: 190px; margin-left: 5px"
           />
         </nz-form-control>
       </nz-form-item>
@@ -31,16 +31,17 @@
           >Color</nz-form-label
         >
         <nz-form-control
-          nzErrorTip="Ingresa el color con este formato #000000"
+          nzErrorTip="Escoge el color en el recuadro"
           style="margin-bottom: 10px"
         >
           <input
             type="text"
             nz-input
             formControlName="color"
-            placeholder="Ingresa el color"
-            style="width: 230px; margin-left: 5px"
+            placeholder="Escoge el color"
+            style="width: 170px; display: none; "
           />
+          <color-picker-component (sendColor)="selectColor($event)"></color-picker-component>
         </nz-form-control>
       </nz-form-item>
     </form>

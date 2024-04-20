@@ -13,13 +13,14 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { Tag } from '../../../core/interfaces/tags/tags';
 import { TagFacade } from '../../../aplication/facade/tag.facade';
+import { ColorPickerComponent } from "../../color-picker/color-picker.component";
 
 @Component({
-  standalone: true,
-  selector: 'update-tag-modal',
-  templateUrl: './update-tag.modal.html',
-  styleUrl: './update-tag.modal.scss',
-  imports: [NzModalModule, NzFormModule, FormsModule, ReactiveFormsModule],
+    standalone: true,
+    selector: 'update-tag-modal',
+    templateUrl: './update-tag.modal.html',
+    styleUrl: './update-tag.modal.scss',
+    imports: [NzModalModule, NzFormModule, FormsModule, ReactiveFormsModule, ColorPickerComponent]
 })
 export class UpdateTagComponent implements OnInit{
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
@@ -38,16 +39,20 @@ export class UpdateTagComponent implements OnInit{
   ngOnInit(): void {
      this.validateForm = this.formBuilder.group({
       name: [this.updateTagData.name, [Validators.required]],
-      color: [this.updateTagData.color, [Validators.required, this.validateHashtagNumber]]
+      color: [this.updateTagData.color, [Validators.required, this.validateHashtag]]
     }); 
   }
 
-  validateHashtagNumber(control: AbstractControl): {[key: string]: any} | null {
+  validateHashtag(control: AbstractControl): {[key: string]: any} | null {
     const value = control.value;
-    if (value[0] !== '#' || value.length === 1 || !(/^\d+$/.test(value.substring(1)))) {
+    if (value[0] !== '#' || value.length === 1 || !(/^[a-zA-Z0-9]+$/.test(value.substring(1)))) {
       return { 'invalidHashtagNumber': true };
     }
     return null;
+  }
+
+  selectColor(color: string){
+    this.validateForm.patchValue({ color: color });
   }
 
   handleOk() {

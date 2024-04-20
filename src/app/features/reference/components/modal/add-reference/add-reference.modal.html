@@ -4,12 +4,12 @@
   (nzOnOk)="handleOk()"
   nzCentered
   nzTitle="Agregar nueva referencia"
-  nzWidth="400px"
+  nzWidth="550px"
 >
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOk()">
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired nzFor="title">
+        <nz-form-label [nzSpan]="5" nzRequired nzFor="title">
           Título
         </nz-form-label>
         <nz-form-control
@@ -21,72 +21,84 @@
             nz-input
             formControlName="title"
             placeholder="Ingresa el título"
-            style="width: 230px; margin-left: 5px"
+            style="width: 374px; margin-left: 5px"
           />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired nzFor="dateOfPublication"
-          >Año</nz-form-label
-        >
-        <nz-form-control
-          nzErrorTip="Ingresa el año de publicación"
-          style="margin-bottom: 10px"
-        >
-          <nz-date-picker
-            nzMode="year"
-            formControlName="dateOfPublication"
-            nzPlaceHolder="Ingresa el año de publicación"
-            style="width: 230px; margin-left: 5px; cursor: pointer"
-            [nzInputReadOnly]="true"
-          ></nz-date-picker>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="referenceAuthors"
+        <nz-form-label [nzSpan]="5" nzFor="referenceAuthors"
           >Autor</nz-form-label
         >
-        <nz-form-control style="margin-bottom: 10px">
-          <nz-select
-            id="referenceAuthor"
-            formControlName="referenceAuthors"
-            nzPlaceHolder="Selecciona un Autor"
-            (ngModelChange)="selectAuthor($event)"
-            style="width: 230px; margin-left: 5px"
-          >
-            @for (author of listOfAuthors; track $index) {
-            <nz-option
-              nzValue="{{author.id}}"
-              nzLabel="{{author.name}}"
-            ></nz-option>
-            }
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzFor="referenceTags"
-          >Etiqueta</nz-form-label
+        <nz-select
+          [ngModelOptions]="{standalone: true}"
+          nzMode="multiple"
+          nzPlaceHolder="Selecciona un Autor"
+          [(ngModel)]="authorsSelected"
+          (ngModelChange)="selectAuthor($event)"
+          style="width: 374px; margin-left: 5px; margin-bottom: 10px"
+          [nzShowSearch]="true"
+          [nzShowArrow]="true"
         >
-        <nz-form-control style="margin-bottom: 10px">
-          <nz-select
-            id="referenceTag"
-            formControlName="referenceTags"
-            nzPlaceHolder="Selecciona una Etiqueta"
-            (ngModelChange)="selectTag($event)"
-            style="width: 230px; margin-left: 5px"
-          >
-            @for (tag of listOfTags; track $index) {
-            <nz-option nzValue="{{tag.id}}" nzLabel="{{tag.name}}"></nz-option>
-            }
-          </nz-select>
-        </nz-form-control>
+          @for (author of listOfAuthors; track author) {
+          <nz-option
+            [nzValue]="author.name"
+            [nzLabel]="author.name"
+            [nzHide]="isSelectedAuthor(author.name)"
+          ></nz-option>
+          }
+        </nz-select>
       </nz-form-item>
 
+      <div nz-row>
+        <div nz-col [nzSpan]="10">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="12" nzRequired nzFor="dateOfPublication"
+              >Año</nz-form-label
+            >
+            <nz-form-control
+              nzErrorTip="Ingresa el año de publicación"
+              style="margin-bottom: 10px"
+            >
+              <nz-date-picker
+                nzMode="year"
+                formControlName="dateOfPublication"
+                nzPlaceHolder="Ingresa el año de publicación"
+                style="width: 80px; margin-left: 5px; cursor: pointer"
+                [nzInputReadOnly]="true"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="5" nzFor="referenceTags"
+              >Etiqueta</nz-form-label
+            >
+            <nz-select
+              [ngModelOptions]="{standalone: true}"
+              nzMode="multiple"
+              nzPlaceHolder="Selecciona una Etiqueta"
+              [(ngModel)]="tagsSelected"
+              (ngModelChange)="selectTag($event)"
+              style="width: 210px; margin-left: 5px; margin-bottom: 10px;"
+              [nzShowSearch]="true"
+              [nzShowArrow]="true"
+            >
+              @for (tag of listOfTags; track $index) {
+              <nz-option
+                nzValue="{{tag.name}}"
+                nzLabel="{{tag.name}}"
+                [nzHide]="isSelectedTag(tag.name)"
+              ></nz-option>
+              }
+            </nz-select>
+          </nz-form-item>
+        </div>
+      </div>
+
       <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired nzFor="publicationPlace"
+        <nz-form-label [nzSpan]="5" nzRequired nzFor="publicationPlace"
           >Enlace</nz-form-label
         >
         <nz-form-control
@@ -98,8 +110,8 @@
             nz-input
             formControlName="publicationPlace"
             placeholder="Ingresa el enlace"
-            style="width: 230px; margin-left: 5px"
-          /> 
+            style="width: 374px; margin-left: 5px"
+          />
         </nz-form-control>
       </nz-form-item>
     </form>

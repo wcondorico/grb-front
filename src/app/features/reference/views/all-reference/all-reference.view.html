@@ -14,6 +14,8 @@
       <update-reference-modal 
       [(isVisibleModalUpdateReference)]="isVisibleModalUpdateReference"
       [updateReference]="editableReference"
+      [authorsSelected]="authorsSelected"
+      [tagsSelected]="tagsSelected"
       (sendUpdateReference)="getReference()"
       ></update-reference-modal>          
     }

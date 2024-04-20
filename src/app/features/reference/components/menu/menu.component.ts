@@ -9,6 +9,7 @@ import { NzTooltipDirective } from "ng-zorro-antd/tooltip";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
+  styleUrl: './menu.component.scss',
   standalone: true,
   imports: [
     NzButtonComponent,
@@ -18,13 +19,8 @@ import { NzTooltipDirective } from "ng-zorro-antd/tooltip";
     NzTooltipDirective,
     NzSubMenuComponent,
     RouterLink
-  ],
-  styleUrls: ['./menu.component.css']
+  ]
 })
 export class MenuComponent {
-  isCollapsed = false;
-
-  toggleCollapsed(): void {
-    this.isCollapsed = !this.isCollapsed;
-  }
+  
 }

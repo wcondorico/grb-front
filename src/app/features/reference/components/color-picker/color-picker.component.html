@@ -1,12 +1,13 @@
 <input
-  [(colorPicker)]="color"
-  [style.background]="color"
+  [(colorPicker)]="backGround"
+  [style.background]="backGround"
   [cpOKButton]="true"
   [cpCancelButton]="true"
-  [cpAddColorButton]="true"
-  [cpSaveClickOutside]="true"
-  [cpOKButtonText]="'Save Color'"
-  [cpPresetColorsClass]="color"
-  (colorPickerSelect)="action($event)"
+  [cpAlphaChannel]="'disabled'"
+  [cpOKButtonText]="'Seleccionar'"
+  [cpCancelButtonText]="'Cancelar'"
+  [cpPresetColorsClass]="backGround"
+  (colorPickerSelect)="setColor($event)"
   class="color-input"
+  readonly
 />

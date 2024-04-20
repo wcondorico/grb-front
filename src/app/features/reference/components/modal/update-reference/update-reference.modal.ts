@@ -21,6 +21,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { NzI18nService, en_US } from 'ng-zorro-antd/i18n';
 import { AuthorFacade } from '../../../aplication/facade/author.facade';
@@ -44,6 +45,7 @@ import { Tag } from '../../../core/interfaces/tags/tags';
     NzSelectModule,
     FormsModule,
     NzDatePickerModule,
+    NzButtonModule
   ],
 })
 export class EditReferenceModalComponent implements OnInit {
@@ -54,6 +56,8 @@ export class EditReferenceModalComponent implements OnInit {
   private readonly i18n: NzI18nService = inject(NzI18nService);
 
   @Input() isVisibleModalUpdateReference = false;
+  @Input() authorsSelected!: string[];
+  @Input() tagsSelected!: string[];
   @Input() updateReference!: ReferenceUpdateBody;
   @Output() isVisibleModalUpdateReferenceChange = new EventEmitter<boolean>();
   @Output() sendUpdateReference = new EventEmitter<void>();
@@ -64,8 +68,6 @@ export class EditReferenceModalComponent implements OnInit {
     title: FormControl<string | null>;
     dateOfPublication: FormControl<Date | null>;
     publicationPlace: FormControl<string | null>;
-    referenceAuthor: FormControl<string | null>;
-    referenceTag: FormControl<string | null>;
   }>;
 
   ngOnInit(): void {
@@ -85,8 +87,6 @@ export class EditReferenceModalComponent implements OnInit {
         this.updateReference.publicationPlace,
         [Validators.required],
       ],
-      referenceAuthor: [''],
-      referenceTag: [''],
     });
   }
 
@@ -133,7 +133,17 @@ export class EditReferenceModalComponent implements OnInit {
     );
   }
 
-  addAuthor(value: number): void {}
+  addAuthor(value: number): void {
+
+  }
+
+  isSelectedAuthor(author: string): boolean {
+    return this.authorsSelected.indexOf(author) !== -1;
+  }
+
+  isSelectedTag(tag: string): boolean {
+    return this.tagsSelected.indexOf(tag) !== -1;
+  }
 
   addTag(value: number) {}
 }

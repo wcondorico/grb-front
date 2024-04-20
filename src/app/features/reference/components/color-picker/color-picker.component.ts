@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 @Component({
@@ -11,9 +11,12 @@ import { ColorPickerModule } from 'ngx-color-picker';
   styleUrl: './color-picker.component.scss',
 })
 export class ColorPickerComponent { 
-  color = "blue"
+  @Input() backGround = "#96a0c4";
+  @Output() sendColor = new EventEmitter<string>();
+  
 
-  action(color: string){
-    console.log(color);
+  setColor(color: string){
+    this.backGround = color;
+    this.sendColor.emit(this.backGround)
   }
 }

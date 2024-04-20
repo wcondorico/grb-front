@@ -1,8 +1,8 @@
 :host {
   background-color: #acb7d8;
   padding: 0 8px;
-  box-shadow: 0.5px 0px 15px 5px rgba(0,0,0,0.20);
-  
+  box-shadow: 0.5px 0px 15px 5px rgba(0, 0, 0, 0.2);
+
   .side {
     width: 220px;
     height: 100%;
@@ -54,16 +54,11 @@
           border: 0;
           width: 100%;
           border-radius: 10px;
-        }
+          transition: box-shadow 0.3s ease-out;
 
-        & > button:after {
-          animation: glow 0.3s linear;
-        }
-
-        @keyframes glow {
-          0% { box-shadow: 0 0 5px rgba(0,0,0,0.5); }
-          50% { box-shadow: 0 0 10px rgba(0,0,0,0.8); }
-          100% { box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+          &:hover {
+            box-shadow: 0px 0px 2px 0.5px rgba(0, 0, 0, 0.3);
+          }
         }
       }
 
@@ -72,7 +67,7 @@
       }
     }
 
-    &__user{
+    &__user {
       width: 100%;
       height: 50px;
       position: absolute;
@@ -86,7 +81,7 @@
         border-radius: 5px;
         display: flex;
         justify-content: space-between;
-        align-items: center;;
+        align-items: center;
         padding-inline: 15px;
         gap: 20px;
         cursor: pointer;
@@ -94,13 +89,12 @@
         > p {
           margin: 0;
           font-weight: bold;
-          
         }
-  
+
         > span {
-            margin-right: 6px;
-            font-size: 22px;
-            color: #c8cde0;
+          margin-right: 6px;
+          font-size: 22px;
+          color: #c8cde0;
         }
       }
 
@@ -125,8 +119,8 @@
           color: white;
           opacity: 0.9;
           font-weight: semibold;
-          
-          :hover{
+
+          :hover {
             background-color: #697496;
           }
         }

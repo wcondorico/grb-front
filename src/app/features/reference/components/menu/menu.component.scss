@@ -6,18 +6,22 @@
     font-size: 18px;
     border: 0;
     
-    > li {
+    & > li {
       border-radius: 5px;
+    }
+
+    & > li:hover {
+        background-color: #96a0c4;
     }
     
     .ant-menu-item-selected {
       background-color: #7a84a4;
     }
-
-    > li:hover {
-        background-color: #96a0c4;
-        color: rgb(238, 238, 238);
+    .ant-menu-item * {
+      transition: none;
     }
+
+    
 
   
   }

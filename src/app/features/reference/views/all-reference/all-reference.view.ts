@@ -49,6 +49,8 @@ export class AllReference implements OnInit {
   isVisibleModalAddReference = false;
   isVisibleModalUpdateReference = false;
   editableReference!: ReferenceUpdateBody;
+  authorsSelected: string[] = []
+  tagsSelected: string[] = []
 
   ngOnInit() {
     this.serviceUpdateTableReference.updateTableReference.subscribe(() => {
@@ -107,6 +109,8 @@ export class AllReference implements OnInit {
       deleteReferenceTags: [],
     };
     this.isVisibleModalUpdateReference = true;
+    this.authorsSelected = this.getAuthorName(data)
+    this.tagsSelected = this.getTagName(data)
   }
 
   deleteReference(id: number) {

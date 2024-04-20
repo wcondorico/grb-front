@@ -22,6 +22,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
 
 import { AuthorFacade } from '../../../aplication/facade/author.facade';
 import { ReferenceFacade } from '../../../aplication/facade/reference.facade';
@@ -35,6 +37,7 @@ import {
 import { Tag } from '../../../core/interfaces/tags/tags';
 import { UpdateTableReference } from './add-references.service';
 import { ColorPickerComponent } from "../../color-picker/color-picker.component";
+
 
 @Component({
     standalone: true,
@@ -50,7 +53,8 @@ import { ColorPickerComponent } from "../../color-picker/color-picker.component"
         NzSelectModule,
         NzDatePickerModule,
         FormsModule,
-        ColorPickerComponent
+        ColorPickerComponent,
+        NzButtonModule
     ]
 })
 export class AddReferenceModalComponent implements OnInit {
@@ -66,25 +70,26 @@ export class AddReferenceModalComponent implements OnInit {
   @Output() isVisibleModalAddReferenceChange = new EventEmitter<boolean>();
   listOfTags!: Tag[];
   listOfAuthors!: Authors[];
-  authorSelected: ReferenceAuthorBody[] = [];
-  tagSelected: ReferenceTagBody[] = [];
+  authorsSelected: string[] = [];
+  tagsSelected: string[] = [];
+  authorsToAdd: ReferenceAuthorBody[] = [];
+  tagToAdd: ReferenceTagBody[] = [];
   addReference: ReferenceCreateBody = {
     title: '',
     publicationPlace: '',
     dateOfPublication: new Date(),
   };
   
+  
   validateForm: FormGroup<{
     title: FormControl<string | null>;
     dateOfPublication: FormControl<Date | null>;
     publicationPlace: FormControl<string | null>;
-    referenceAuthors: FormControl<string | null>;
     referenceTags: FormControl<string | null>;
   }> = this.formBuilder.group({
     title: ['', [Validators.required]],
     dateOfPublication: [new Date(), [Validators.required]],
     publicationPlace: ['', [Validators.required]],
-    referenceAuthors: [''],
     referenceTags: [''],
   });
   
@@ -102,8 +107,8 @@ export class AddReferenceModalComponent implements OnInit {
         title: this.validateForm.value.title!,
         dateOfPublication: this.validateForm.value.dateOfPublication!,
         publicationPlace: this.validateForm.value.publicationPlace!,
-        referenceAuthors: this.authorSelected,
-        referenceTags: this.tagSelected,
+        referenceAuthors: this.authorsToAdd,
+        referenceTags: this.tagToAdd,
       };
       console.log(this.addReference);
       this.referenceService.addReference(this.addReference).subscribe({
@@ -130,16 +135,35 @@ export class AddReferenceModalComponent implements OnInit {
     this.isVisibleModalAddReferenceChange.emit(this.isVisibleModalAddReference);
   }
 
-  selectAuthor(id: number): void {
-    this.authorSelected.push({
-      authorId: Number(id),
-    });
-    console.log(this.authorSelected);
+  isSelectedAuthor(author: string): boolean {
+    return this.authorsSelected.indexOf(author) !== -1;
   }
 
-  selectTag(id: number): void {
-    this.tagSelected.push({
-      tagId: Number(id),
-    });
+  isSelectedTag(tag: string): boolean {
+    return this.tagsSelected.indexOf(tag) !== -1;
+  }
+  
+  selectAuthor(list: string[]): void {
+    let authorsSelect: ReferenceAuthorBody[] = []
+    list.forEach(authorSelected => {
+      this.listOfAuthors.map(objAuthor => objAuthor.name === authorSelected
+        ? authorsSelect.push({
+          authorId: objAuthor.id!,
+          })
+        : null)
+    })
+    this.authorsToAdd = authorsSelect;
+  }
+
+  selectTag(list: string[]): void {
+    let tagsSelect: ReferenceTagBody[] = []
+    list.forEach(tagSelected => {
+      this.listOfTags.map(objTag => objTag.name === tagSelected
+        ? tagsSelect.push({
+          tagId: objTag.id!,
+          })
+        : null)
+    })
+    this.tagToAdd = tagsSelect;
   }
 }

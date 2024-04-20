@@ -3,22 +3,26 @@
     <div class="main-container__title">
       <p>Etiquetas</p>
     </div>
-    <button nz-button nzType="primary"  nzShape="round" (click)="changeIsVisibleTagModalAdd()">
+    <button
+      nz-button
+      nzType="primary"
+      nzShape="round"
+      (click)="changeIsVisibleTagModalAdd()"
+    >
       <span nz-icon nzType="upload"></span>
       Nueva Etiqueta
     </button>
     @if(isVisibleModalAddTag){
-      <add-tag-modal 
+    <add-tag-modal
       [(isVisibleModalAddTag)]="isVisibleModalAddTag"
       (sendAddTag)="getAllTags()"
-      ></add-tag-modal>          
-    }
-    @if(isVisibleModalUpdateTag){
-      <update-tag-modal 
+    ></add-tag-modal>
+    } @if(isVisibleModalUpdateTag){
+    <update-tag-modal
       [(isVisibleModalUpdateTag)]="isVisibleModalUpdateTag"
       [updateTagData]="updateTagData"
       (sendUpdateTag)="getAllTags()"
-      ></update-tag-modal>          
+    ></update-tag-modal>
     }
     <div class="main-container__table">
       <nz-table
@@ -50,7 +54,7 @@
           @for (data of nzTable.data; track data) {
           <tr>
             <td>{{ data.name }}</td>
-            <td>{{ data.color }}</td>
+            <td><input type="text" class="color" readonly [style.backgroundColor]="data.color"/></td>
             <td>{{ data.createAt | date : "medium" }}</td>
             <td>
               <span

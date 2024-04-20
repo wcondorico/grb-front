@@ -13,13 +13,14 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { Tag } from '../../../core/interfaces/tags/tags';
 import { TagFacade } from '../../../aplication/facade/tag.facade';
+import { ColorPickerComponent } from "../../color-picker/color-picker.component";
 
 @Component({
-  standalone: true,
-  selector: 'add-tag-modal',
-  templateUrl: './add-tag.modal.html',
-  styleUrl: './add-tag.modal.scss',
-  imports: [NzModalModule, NzFormModule, FormsModule, ReactiveFormsModule],
+    standalone: true,
+    selector: 'add-tag-modal',
+    templateUrl: './add-tag.modal.html',
+    styleUrl: './add-tag.modal.scss',
+    imports: [NzModalModule, NzFormModule, FormsModule, ReactiveFormsModule, ColorPickerComponent]
 })
 export class AddTagComponent implements OnInit{
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
@@ -38,19 +39,24 @@ export class AddTagComponent implements OnInit{
   ngOnInit(): void {
       this.validateForm = this.formBuilder.group({
         name: ['', [Validators.required]],
-        color: ['#', [Validators.required, this.validateHashtagNumber]]
+        color: ['', [Validators.required, this.validateHashtagNumber]]
       });
   }
 
   validateHashtagNumber(control: AbstractControl): {[key: string]: any} | null {
     const value = control.value;
-    if (value[0] !== '#' || value.length === 1 || !(/^\d+$/.test(value.substring(1)))) {
+    if (value[0] !== '#' || value.length === 1 || !(/^[a-zA-Z0-9]+$/.test(value.substring(1)))) {
       return { 'invalidHashtagNumber': true };
     }
     return null;
   }
 
+  selectColor(color: string){
+    this.validateForm.patchValue({ color: color });
+  }
+
   handleOk() {
+    console.log(this.validateForm.value.color);
     if(this.validateForm.valid){
       this.addTag = {
         name: this.validateForm.value.name!,
@@ -76,7 +82,6 @@ export class AddTagComponent implements OnInit{
   }
 
   handleCancel(): void {
-
     this.isVisibleModalAddTag = false;
     this.isVisibleModalAddTagChange.emit(this.isVisibleModalAddTag);
   }
