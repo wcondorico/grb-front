@@ -4,19 +4,20 @@
   [nz-menu] {
     background-color: #acb7d8;
     font-size: 18px;
-    border: 0;
+    border: 0;  
     
     & > li {
       border-radius: 5px;
-    }
-
-    & > li:hover {
-        background-color: #96a0c4;
+      
+      &:hover {
+          background-color: #96a0c4;
+      }
     }
     
     .ant-menu-item-selected {
       background-color: #7a84a4;
     }
+    
     .ant-menu-item * {
       transition: none;
     }

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Authors } from '../../core/interfaces/authors/authors';
 import { environment } from '../../../../../environments/environment';
-import { AuthorsBody } from '../../core/interfaces/authors/authors-update-body';
 
 @Injectable()
 export class AuthorsHttp extends AllAuthorRepository{
@@ -22,7 +21,7 @@ export class AuthorsHttp extends AllAuthorRepository{
   deleteAuthor(id: number): Observable<Authors> {
     return this.http.delete<Authors>(`${this.url}/${id}`);
   }
-  updateAuthor(id: number, body: AuthorsBody): Observable<Authors> {
+  updateAuthor(id: number, body: Authors): Observable<Authors> {
     return this.http.put<Authors>(`${this.url}/${id}`,body);
   }
 }

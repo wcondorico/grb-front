@@ -18,7 +18,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { AuthorFacade } from '../../../aplication/facade/author.facade';
 import { Authors } from '../../../core/interfaces/authors/authors';
-import { AuthorsBody } from '../../../core/interfaces/authors/authors-update-body';
 
 @Component({
   standalone: true,
@@ -48,7 +47,7 @@ export class UpdateAuthorModal implements OnInit {
 
   handleOk() {
     if (this.validateForm.valid) {
-      let authorData: AuthorsBody = {
+      let authorData: Authors = {
         name: this.validateForm.value.name!
       };
       this.authorService.updateAuthor(this.updateAuthorData.id!,authorData).subscribe({

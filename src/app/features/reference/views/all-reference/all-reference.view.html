@@ -4,7 +4,7 @@
       <p>Todas las Referencias</p>
     </div>
     <button nz-button nzType="primary"  nzShape="round" (click)="changeIsVisibleModalAdd()">
-      <span nz-icon nzType="upload"></span>
+      <span nz-icon nzType="plus-circle"></span>
       Nueva Referencia
     </button>
     @if(isVisibleModalAddReference){
@@ -13,7 +13,7 @@
     @if(isVisibleModalUpdateReference){
       <update-reference-modal 
       [(isVisibleModalUpdateReference)]="isVisibleModalUpdateReference"
-      [updateReference]="editableReference"
+      [referenceResponse]="referenceResponse"
       [authorsSelected]="authorsSelected"
       [tagsSelected]="tagsSelected"
       (sendUpdateReference)="getReference()"

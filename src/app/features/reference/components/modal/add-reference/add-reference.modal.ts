@@ -80,7 +80,6 @@ export class AddReferenceModalComponent implements OnInit {
     dateOfPublication: new Date(),
   };
   
-  
   validateForm: FormGroup<{
     title: FormControl<string | null>;
     dateOfPublication: FormControl<Date | null>;
@@ -110,9 +109,9 @@ export class AddReferenceModalComponent implements OnInit {
         referenceAuthors: this.authorsToAdd,
         referenceTags: this.tagToAdd,
       };
-      console.log(this.addReference);
+
       this.referenceService.addReference(this.addReference).subscribe({
-        next: (response) => {
+        next: () => {
           this.updateReferences.updateTableReference.next(false),
           this.isVisibleModalAddReference = false;
           this.isVisibleModalAddReferenceChange.emit(this.isVisibleModalAddReference);

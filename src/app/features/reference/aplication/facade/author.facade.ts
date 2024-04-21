@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { AllAuthorRepository } from '../../domain/repository/author.repository';
 import { Authors } from '../../core/interfaces/authors/authors';
-import { AuthorsBody } from '../../core/interfaces/authors/authors-update-body';
 
 @Injectable()
 export class AuthorFacade {
@@ -19,7 +18,7 @@ export class AuthorFacade {
     return this.Author.deleteAuthor(id);
   }
 
-  updateAuthor(id: number, body: AuthorsBody) {
+  updateAuthor(id: number, body: Authors) {
     return this.Author.updateAuthor(id,body);
   }
 }

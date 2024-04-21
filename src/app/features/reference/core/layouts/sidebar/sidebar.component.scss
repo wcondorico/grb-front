@@ -100,9 +100,9 @@
 
       .list {
         position: absolute;
-        padding-bottom: 5px;
         bottom: 50px;
         border-radius: 0;
+        border: 0;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         z-index: 11;
@@ -113,6 +113,7 @@
           height: 40px;
           padding: 5px;
           padding-inline: 20px;
+          margin: 0;
           display: flex;
           align-items: center;
           font-size: 14px;
@@ -120,11 +121,22 @@
           opacity: 0.9;
           font-weight: semibold;
 
-          :hover {
-            background-color: #697496;
+          & span {
+            font-size: 16px;
+          }
+
+          &:hover {
+            background-color: #7e8cb3;
           }
         }
+        
+        .ant-menu-item-selected {
+          background-color: #6c7a9e;
+        }
       }
+
+      
+      
     }
   }
 }

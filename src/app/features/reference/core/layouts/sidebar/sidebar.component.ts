@@ -7,6 +7,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 import { MenuComponent } from "../../../components/menu/menu.component";
 import { AddReferenceModalComponent } from '../../../components/modal/add-reference/add-reference.modal';
@@ -26,6 +27,7 @@ import { AddReferenceModalComponent } from '../../../components/modal/add-refere
         NzMenuModule,
         NzModalModule,
         AddReferenceModalComponent,
+        NzSelectModule
     ]
 })
 export class SidebarComponent {
@@ -38,7 +40,8 @@ export class SidebarComponent {
     this.showListUser = !this.showListUser
   }
 
-  changeIsVisibleModal(){
+  changeIsVisibleModalReference(){
     this.isVisibleModalReference = true
   }
+  
 }

@@ -62,7 +62,6 @@ export class UpdateTagComponent implements OnInit{
         name: this.validateForm.value.name!,
         color: this.validateForm.value.color!
       };
-      console.log(this.updateTagData);
       this.tagService.updateTag(this.updateTagData.id!, tagData).subscribe({
         next: (response) => {
           console.log(response);
@@ -83,7 +82,6 @@ export class UpdateTagComponent implements OnInit{
   }
 
   handleCancel(): void {
-
     this.isVisibleModalUpdateTag = false;
     this.isVisibleModalUpdateTagChange.emit(this.isVisibleModalUpdateTag);
   }

@@ -8,8 +8,8 @@
 
   <div class="references">
     <div class="references__button">
-      <button nz-button nzType="primary" [nzSize]="size" nzShape="round" (click)="changeIsVisibleModal()">
-        <span nz-icon nzType="upload"></span>
+      <button nz-button nzType="primary" [nzSize]="size" nzShape="round" (click)="changeIsVisibleModalReference()">
+        <span nz-icon nzType="plus-circle"></span>
         Nueva Referencia
       </button>
       @if(isVisibleModalReference){
@@ -22,18 +22,26 @@
     </div>
   </div>
 
-  <div class="side__user">
-    
+  <div class="side__user">   
     <button (click)="(changeShowListUser())"   [style.background-color]="showListUser ? '#697496':'#95a0c2'">
       <nz-avatar nzIcon="user"></nz-avatar>
       <p>UserName</p>
       <span nz-icon [nzType]="'setting'" [nzTheme]="'fill'"></span>
     </button>
     @if (showListUser) {
-      <div class="list">
-        <div class="list__item">opcion 1</div>
-        <div class="list__item">opcion 2</div>
-        <div class="list__item">opcion 3</div>
+      <div class="list" nz-menu>
+        <div class="list__item" nz-menu-item>
+          <span nz-icon nzType="upload" nzTheme="outline"></span>
+          opcion 1
+        </div>
+        <div class="list__item" nz-menu-item>
+          <span nz-icon nzType="upload" nzTheme="outline"></span>
+          opcion 2
+        </div>
+        <div class="list__item" nz-menu-item>
+          <span nz-icon nzType="upload" nzTheme="outline" [nzRotate]="90"></span>
+          opcion 3
+        </div>
       </div>
     }
   </div>

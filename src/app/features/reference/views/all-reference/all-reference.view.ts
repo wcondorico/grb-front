@@ -1,22 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
 
+import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { NzModalService } from 'ng-zorro-antd/modal';
-import { NzButtonComponent } from 'ng-zorro-antd/button';
 
 import { ReferenceFacade } from '../../aplication/facade/reference.facade';
+import { AddReferenceModalComponent } from '../../components/modal/add-reference/add-reference.modal';
 import { UpdateTableReference } from '../../components/modal/add-reference/add-references.service';
 import { EditReferenceModalComponent } from '../../components/modal/update-reference/update-reference.modal';
 import { ReferenceResponse } from '../../core/interfaces/references/reference-response';
-import { ReferenceUpdateBody } from '../../core/interfaces/references/reference-update-body';
-import { AddReferenceModalComponent } from '../../components/modal/add-reference/add-reference.modal';
 
 @Component({
   selector: 'app-all-reference',
@@ -48,7 +45,7 @@ export class AllReference implements OnInit {
   isVisibleSearch = false;
   isVisibleModalAddReference = false;
   isVisibleModalUpdateReference = false;
-  editableReference!: ReferenceUpdateBody;
+  referenceResponse!: ReferenceResponse;
   authorsSelected: string[] = []
   tagsSelected: string[] = []
 
@@ -96,18 +93,7 @@ export class AllReference implements OnInit {
   }
 
   updateReference(data: ReferenceResponse) {
-    this.editableReference = {
-      id: data.id,
-      title: data.title,
-      dateOfPublication: new Date(data.dateOfPublication),
-      publicationPlace: data.publicationPlace,
-      createReferenceAuthors: [],
-      updateReferenceAuthors: [],
-      deleteReferenceAuthors: [],
-      createReferenceTags: [],
-      updateReferenceTags: [],
-      deleteReferenceTags: [],
-    };
+    this.referenceResponse = data;
     this.isVisibleModalUpdateReference = true;
     this.authorsSelected = this.getAuthorName(data)
     this.tagsSelected = this.getTagName(data)
