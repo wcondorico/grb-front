@@ -4,5 +4,5 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class UpdateTableReference {
   
-  updateTableReference = new BehaviorSubject<boolean>(true);
+  updateTableReference: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 }
